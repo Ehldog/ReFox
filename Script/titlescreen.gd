@@ -2,7 +2,7 @@ extends Node2D
 @onready var transition = $MovementParralax/transition
 @onready var Canvassetting = $MovementParralax/CanvasSetting
 @onready var SelectNoise = $Select
-var fullscreen = true
+var fullscreen = false
 var settingvis = true
 
 func _on_button_pressed():

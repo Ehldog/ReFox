@@ -84,6 +84,7 @@ offset_bottom = 210.0
 icon = ExtResource("7_vmpns")
 
 [node name="CanvasSetting" type="CanvasGroup" parent="MovementParralax"]
+visible = false
 
 [node name="Label" type="Label" parent="MovementParralax/CanvasSetting"]
 offset_left = 472.0
