@@ -31,7 +31,7 @@ var last_obs
 signal speed_var(speed_value)
 
 func _ready():
-	screen_size = get_viewport().size
+	screen_size = Vector2i(640, 360)
 	ground_height = $GroundCityLvl.get_node("Sprite2D").texture.get_height()
 	new_game()
 
@@ -82,7 +82,7 @@ func generate_obs():
 		var spriteheight = obs.get_node("AnimatedSprite2D").sprite_frames.get_frame_texture("idle", 0)
 		var obs_height = spriteheight.get_size()
 		var obs_x: int = screen_size.x + score + 100
-		var obs_y: int = screen_size.y - ground_height - (obs_height.y/2) + 5
+		var obs_y: int = screen_size.y - ground_height - (obs_height.y/2) + 15
 		last_obs = obs
 		add_obs(obs, obs_x, obs_y)
 
