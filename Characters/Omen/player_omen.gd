@@ -48,6 +48,10 @@ func update_animation():
 	animation_tree.set("parameters/Move/blend_position", input_component.input_horizontal)
 
 
-func _on_test_speed_var(speed_value):
+#func _on_test_speed_var(speed_value):
+	#speed = speed_value
+	#speed_auto.emit(speed)
+
+func _on_city_lvl_speed_var(speed_value):
 	speed = speed_value
 	speed_auto.emit(speed)

@@ -143,6 +143,7 @@ animations = [{
 radius = 12.0
 
 [node name="Troll" type="Area2D"]
+scale = Vector2(2, 2)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_kcpu6")
