@@ -1,0 +1,163 @@
+[gd_scene load_steps=22 format=3 uid="uid://cre5twcingk4f"]
+
+[ext_resource type="Texture2D" uid="uid://dj6a0f731njfo" path="res://Assets/Monsters/Pig Assassin/Sprite Sheet.png" id="1_gj5nv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_urb4t"]
+atlas = ExtResource("1_gj5nv")
+region = Rect2(0, 192, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y3k3p"]
+atlas = ExtResource("1_gj5nv")
+region = Rect2(48, 192, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3wxlf"]
+atlas = ExtResource("1_gj5nv")
+region = Rect2(96, 192, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_usvxk"]
+atlas = ExtResource("1_gj5nv")
+region = Rect2(144, 192, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b02mx"]
+atlas = ExtResource("1_gj5nv")
+region = Rect2(192, 192, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jap02"]
+atlas = ExtResource("1_gj5nv")
+region = Rect2(240, 192, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ojc4j"]
+atlas = ExtResource("1_gj5nv")
+region = Rect2(288, 192, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v6hd7"]
+atlas = ExtResource("1_gj5nv")
+region = Rect2(336, 192, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4b8gb"]
+atlas = ExtResource("1_gj5nv")
+region = Rect2(384, 192, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jlav8"]
+atlas = ExtResource("1_gj5nv")
+region = Rect2(0, 160, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yto1q"]
+atlas = ExtResource("1_gj5nv")
+region = Rect2(48, 160, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dk0fb"]
+atlas = ExtResource("1_gj5nv")
+region = Rect2(0, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ls1t3"]
+atlas = ExtResource("1_gj5nv")
+region = Rect2(48, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0wi8e"]
+atlas = ExtResource("1_gj5nv")
+region = Rect2(96, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hcfja"]
+atlas = ExtResource("1_gj5nv")
+region = Rect2(144, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nonnx"]
+atlas = ExtResource("1_gj5nv")
+region = Rect2(192, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5oumk"]
+atlas = ExtResource("1_gj5nv")
+region = Rect2(240, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_028yh"]
+atlas = ExtResource("1_gj5nv")
+region = Rect2(288, 0, 48, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ljqn5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_urb4t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y3k3p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3wxlf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_usvxk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b02mx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jap02")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ojc4j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v6hd7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4b8gb")
+}],
+"loop": true,
+"name": &"death",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jlav8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yto1q")
+}],
+"loop": true,
+"name": &"hit",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dk0fb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ls1t3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0wi8e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hcfja")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nonnx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5oumk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_028yh")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gpr41"]
+radius = 7.0
+height = 18.0
+
+[node name="Pig_Assassin" type="Area2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ljqn5")
+animation = &"idle"
+autoplay = "idle"
+flip_h = true
+
+[node name="Collision_idle" type="CollisionShape2D" parent="."]
+position = Vector2(0, 7)
+shape = SubResource("CapsuleShape2D_gpr41")

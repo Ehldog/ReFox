@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://deut0bi01cso8"]
+
+[ext_resource type="Script" path="res://Component/camera/camera_component.gd" id="1_m5sos"]
+
+[node name="CameraComponent" type="Node"]
+script = ExtResource("1_m5sos")

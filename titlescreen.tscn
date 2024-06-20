@@ -1,0 +1,144 @@
+[gd_scene load_steps=13 format=3 uid="uid://c4cgap4ncyliu"]
+
+[ext_resource type="Script" path="res://Script/titlescreen.gd" id="1_bjvp4"]
+[ext_resource type="PackedScene" uid="uid://c38la50f1d0ub" path="res://Level/City/parallax_bg_titlescreen.tscn" id="1_s5q5k"]
+[ext_resource type="Texture2D" uid="uid://bnp5kafndslmk" path="res://Assets/DARK Patreon Bundle/UI - Ammo/UI - Words/Words With BG/UI - Words2.png" id="2_thbeq"]
+[ext_resource type="Script" path="res://Script/MovementParralax.gd" id="3_heqnw"]
+[ext_resource type="PackedScene" uid="uid://bjhqjxvgmli3k" path="res://SceneSapo/TileSet.tscn" id="4_buby4"]
+[ext_resource type="Texture2D" uid="uid://8odepm1f70rt" path="res://Assets/DARK Patreon Bundle/UI - Ammo/UI - Words/Words With BG/UI - Words3.png" id="5_0b325"]
+[ext_resource type="Texture2D" uid="uid://2snmicjkfip0" path="res://Assets/DARK Patreon Bundle/UI - Ammo/UI - Words/Words With BG/UI - Words4.png" id="7_vmpns"]
+[ext_resource type="Script" path="res://SceneSapo/Score.gd" id="7_xkuky"]
+[ext_resource type="AudioStream" uid="uid://bnsghjm03yds1" path="res://Assets/Pixel RPG Music Pack/Ogg/Pixel 1.ogg" id="9_ildpe"]
+[ext_resource type="AudioStream" uid="uid://bqu6ln82wjm61" path="res://Assets/Sound Effects/10_UI_Menu_SFX/013_Confirm_03.wav" id="10_foapl"]
+
+[sub_resource type="Animation" id="Animation_qnsg1"]
+resource_name = "fade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MovementParralax/transition/ColorRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MovementParralax/transition/ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_upshh"]
+_data = {
+"fade": SubResource("Animation_qnsg1")
+}
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_bjvp4")
+
+[node name="ParallaxBg_CityLvl" parent="." instance=ExtResource("1_s5q5k")]
+
+[node name="MovementParralax" type="CharacterBody2D" parent="."]
+script = ExtResource("3_heqnw")
+
+[node name="Camera2D" type="Camera2D" parent="MovementParralax"]
+position = Vector2(320, 180)
+
+[node name="ButtonNewGame" type="Button" parent="MovementParralax"]
+offset_left = 12.0
+offset_top = 105.0
+offset_right = 113.0
+offset_bottom = 146.0
+icon = ExtResource("2_thbeq")
+
+[node name="transition" type="AnimationPlayer" parent="MovementParralax"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_upshh")
+}
+
+[node name="ColorRect" type="ColorRect" parent="MovementParralax/transition"]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+offset_right = 639.0
+offset_bottom = 360.0
+scale = Vector2(2, 2)
+color = Color(0, 0, 0, 1)
+
+[node name="Settings" type="Button" parent="MovementParralax"]
+offset_left = 12.0
+offset_top = 169.0
+offset_right = 113.0
+offset_bottom = 210.0
+icon = ExtResource("7_vmpns")
+
+[node name="CanvasSetting" type="CanvasGroup" parent="MovementParralax"]
+visible = false
+
+[node name="Label" type="Label" parent="MovementParralax/CanvasSetting"]
+offset_left = 472.0
+offset_top = 118.0
+offset_right = 551.0
+offset_bottom = 141.0
+scale = Vector2(1.5, 1.5)
+text = "Fullscreen
+"
+
+[node name="Fullscreen Button" type="CheckButton" parent="MovementParralax/CanvasSetting"]
+offset_left = 497.0
+offset_top = 146.0
+offset_right = 541.0
+offset_bottom = 170.0
+scale = Vector2(1.5, 1.5)
+button_pressed = true
+
+[node name="UI" parent="MovementParralax/CanvasSetting" instance=ExtResource("4_buby4")]
+layer_0/tile_data = PackedInt32Array(65543, 786432, 2, 65544, 851968, 2, 65545, 917504, 2, 65546, 983040, 2, 65547, 1048576, 2, 65548, 1114112, 2, 131081, 917504, 3, 131082, 983040, 3, 196622, 458752, 4, 262158, 458752, 5, 327694, 458752, 6, 196623, 524288, 4, 327695, 524288, 6, 196624, 524288, 4, 327696, 524288, 6, 196625, 524288, 4, 196626, 589824, 4, 327698, 589824, 6, 262162, 589824, 5, 327697, 524288, 6)
+
+[node name="Score" type="Label" parent="MovementParralax"]
+offset_left = 6.0
+offset_right = 52.0
+offset_bottom = 23.0
+scale = Vector2(2, 2)
+text = "00000"
+script = ExtResource("7_xkuky")
+
+[node name="Exit" type="Button" parent="MovementParralax"]
+offset_left = 12.0
+offset_top = 231.0
+offset_right = 113.0
+offset_bottom = 272.0
+icon = ExtResource("5_0b325")
+
+[node name="Title" type="Label" parent="MovementParralax"]
+offset_left = 237.0
+offset_right = 323.0
+offset_bottom = 23.0
+scale = Vector2(2, 2)
+text = "Fox Project"
+
+[node name="UI" parent="MovementParralax" instance=ExtResource("4_buby4")]
+layer_0/tile_data = PackedInt32Array(65543, 786432, 2, 65544, 851968, 2, 65545, 917504, 2, 65546, 983040, 2, 65547, 1048576, 2, 65548, 1114112, 2, 131081, 917504, 3, 131082, 983040, 3)
+
+[node name="OSTMENU" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_ildpe")
+autoplay = true
+
+[node name="Select" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_foapl")
+
+[connection signal="pressed" from="MovementParralax/ButtonNewGame" to="." method="_on_button_pressed"]
+[connection signal="animation_finished" from="MovementParralax/transition" to="." method="_on_transition_animation_finished"]
+[connection signal="pressed" from="MovementParralax/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="MovementParralax/CanvasSetting/Fullscreen Button" to="." method="_on_fullscreen_button_pressed"]
+[connection signal="pressed" from="MovementParralax/Exit" to="." method="_on_exit_pressed"]

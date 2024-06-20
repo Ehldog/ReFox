@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://c10dpkakf00me"]
+
+[ext_resource type="Texture2D" uid="uid://be0sxd6da7gxn" path="res://Assets/Tileset/ground.png" id="1_fv2li"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dwtso"]
+size = Vector2(1280, 17)
+
+[node name="GroundCityLvl" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 344)
+texture = ExtResource("1_fv2li")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(640, 353)
+shape = SubResource("RectangleShape2D_dwtso")

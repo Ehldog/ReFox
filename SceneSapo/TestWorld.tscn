@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqukekk4vls56"]
+
+[ext_resource type="Script" path="res://Script/World.gd" id="1_kd0ov"]
+[ext_resource type="PackedScene" uid="uid://cmbmeqve1ryrp" path="res://SceneSapo/ground_city.tscn" id="2_3s7ku"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_kd0ov")
+
+[node name="GroundCity" parent="." instance=ExtResource("2_3s7ku")]
+layer_0/tile_data = PackedInt32Array(458752, 131072, 11, 458753, 196608, 11, 458754, 196608, 11)

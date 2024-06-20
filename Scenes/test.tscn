@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://bpmb8h12slrlr"]
+
+[ext_resource type="Script" path="res://Scenes/test.gd" id="1_5dala"]
+[ext_resource type="PackedScene" uid="uid://ddl3kmbdoin8q" path="res://Characters/Omen/player_omen.tscn" id="1_bk1lj"]
+[ext_resource type="PackedScene" uid="uid://b4q4fehpg26jc" path="res://Scenes/HUD.tscn" id="2_juuwb"]
+[ext_resource type="PackedScene" uid="uid://c10dpkakf00me" path="res://Level/City/Ground_CityLvl.tscn" id="2_xtkhy"]
+[ext_resource type="PackedScene" uid="uid://c0te07er76rrm" path="res://Level/City/parallax_bg_CityLvl.tscn" id="3_0qlxc"]
+
+[node name="Test" type="Node2D" node_paths=PackedStringArray("player_choice", "ground_choice")]
+script = ExtResource("1_5dala")
+player_choice = NodePath("Player_Omen")
+ground_choice = NodePath("GroundCityLvl")
+
+[node name="Hud" parent="." instance=ExtResource("2_juuwb")]
+
+[node name="Player_Omen" parent="." instance=ExtResource("1_bk1lj")]
+position = Vector2(357, 150)
+scale = Vector2(2, 2)
+
+[node name="GroundCityLvl" parent="." instance=ExtResource("2_xtkhy")]
+position = Vector2(0, -358)
+scale = Vector2(2, 2)
+
+[node name="ParallaxBg_CityLvl" parent="." instance=ExtResource("3_0qlxc")]
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = 100.0
+offset_top = 27.0
+offset_right = 315.0
+offset_bottom = 50.0
+
+[connection signal="speed_var" from="." to="Player_Omen" method="_on_test_speed_var"]
+[connection signal="camera_player" from="Player_Omen" to="." method="_on_player_omen_camera_player"]

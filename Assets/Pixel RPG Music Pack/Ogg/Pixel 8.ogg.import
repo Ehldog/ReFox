@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bt4mdgyucqow5"
+path="res://.godot/imported/Pixel 8.ogg-340bdc998015246e651f1c8b55f16a5b.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Pixel RPG Music Pack/Ogg/Pixel 8.ogg"
+dest_files=["res://.godot/imported/Pixel 8.ogg-340bdc998015246e651f1c8b55f16a5b.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://c38pte8gxjce2"]
+
+[ext_resource type="PackedScene" uid="uid://ddl3kmbdoin8q" path="res://Characters/Omen/player_omen.tscn" id="1_0n0dm"]
+[ext_resource type="PackedScene" uid="uid://c0te07er76rrm" path="res://Level/City/parallax_bg_CityLvl.tscn" id="1_jf1a7"]
+[ext_resource type="PackedScene" uid="uid://c10dpkakf00me" path="res://Level/City/Ground_CityLvl.tscn" id="1_t234q"]
+
+[node name="CityLvl" type="Node2D"]
+
+[node name="Player_Omen" parent="." instance=ExtResource("1_0n0dm")]
+z_index = 1
+position = Vector2(56, 293)
+scale = Vector2(2, 2)
+
+[node name="GroundCityLvl" parent="." instance=ExtResource("1_t234q")]
+position = Vector2(0, -358)
+scale = Vector2(2, 2)
+
+[node name="ParallaxBg_CityLvl" parent="." instance=ExtResource("1_jf1a7")]
