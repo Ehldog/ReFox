@@ -52,10 +52,6 @@ script = ExtResource("3_xsqfj")
 [node name="Camera2D" type="Camera2D" parent="MovementParralax"]
 position = Vector2(320, 180)
 
-[node name="Player_Omen" parent="MovementParralax" instance=ExtResource("5_solou")]
-position = Vector2(175, 216)
-scale = Vector2(2, 2)
-
 [node name="bck" type="Button" parent="MovementParralax"]
 offset_left = 259.0
 offset_top = 69.0
@@ -80,6 +76,43 @@ offset_bottom = 360.0
 scale = Vector2(2, 2)
 color = Color(0, 0, 0, 1)
 
+[node name="CheckButton" type="CheckButton" parent="MovementParralax"]
+offset_left = 294.0
+offset_top = 200.0
+offset_right = 338.0
+offset_bottom = 224.0
+
+[node name="City" type="Label" parent="MovementParralax"]
+offset_left = 268.0
+offset_top = 202.0
+offset_right = 305.0
+offset_bottom = 225.0
+text = "City"
+
+[node name="Underground" type="Label" parent="MovementParralax"]
+offset_left = 333.0
+offset_top = 188.0
+offset_right = 446.0
+offset_bottom = 244.0
+text = "Under
+ground"
+
+[node name="ButtonPlayer" type="Button" parent="MovementParralax"]
+offset_left = 103.0
+offset_top = 170.0
+offset_right = 214.0
+offset_bottom = 276.0
+
+[node name="ButtonPlayer2" type="Button" parent="MovementParralax"]
+offset_left = 423.0
+offset_top = 170.0
+offset_right = 534.0
+offset_bottom = 276.0
+
+[node name="Player_Omen" parent="MovementParralax" instance=ExtResource("5_solou")]
+position = Vector2(175, 216)
+scale = Vector2(2, 2)
+
 [node name="OSTMENU" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_0dl53")
 autoplay = true
@@ -89,3 +122,6 @@ stream = ExtResource("9_c3a63")
 
 [connection signal="pressed" from="MovementParralax/bck" to="." method="_on_bck_pressed"]
 [connection signal="animation_finished" from="MovementParralax/transition" to="." method="_on_transition_animation_finished"]
+[connection signal="pressed" from="MovementParralax/CheckButton" to="." method="_on_check_button_pressed"]
+[connection signal="pressed" from="MovementParralax/ButtonPlayer" to="." method="_on_button_player_pressed"]
+[connection signal="pressed" from="MovementParralax/ButtonPlayer2" to="." method="_on_button_player_2_pressed"]
