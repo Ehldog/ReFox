@@ -23,12 +23,5 @@ scale = Vector2(2, 2)
 
 [node name="ParallaxBg_CityLvl" parent="." instance=ExtResource("3_0qlxc")]
 
-[node name="Label" type="Label" parent="."]
-visible = false
-offset_left = 100.0
-offset_top = 27.0
-offset_right = 315.0
-offset_bottom = 50.0
-
 [connection signal="speed_var" from="." to="Player_Omen" method="_on_test_speed_var"]
 [connection signal="camera_player" from="Player_Omen" to="." method="_on_player_omen_camera_player"]

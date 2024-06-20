@@ -61,9 +61,6 @@ func _process(delta):
 		if Input.is_action_just_pressed("ui_accept"):
 			game_running = true
 			$Hud.get_node("SpaceLabel").hide()
-	
-	$Label.text = str(cam_player_x) + "      " + str(ground_choice.position.x) + " " + str(screen_size.x)
-	$Label.position.x = player_choice.position.x
 
 func show_score():
 	$Hud.get_node("ScoreLabel").text = " Score: " + str(score / SCORE_MODIFIER)
