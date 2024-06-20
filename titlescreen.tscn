@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c4cgap4ncyliu"]
+[gd_scene load_steps=14 format=3 uid="uid://c4cgap4ncyliu"]
 
 [ext_resource type="Script" path="res://Script/titlescreen.gd" id="1_bjvp4"]
 [ext_resource type="PackedScene" uid="uid://c38la50f1d0ub" path="res://Level/City/parallax_bg_titlescreen.tscn" id="1_s5q5k"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Script/MovementParralax.gd" id="3_heqnw"]
 [ext_resource type="PackedScene" uid="uid://bjhqjxvgmli3k" path="res://SceneSapo/TileSet.tscn" id="4_buby4"]
 [ext_resource type="Texture2D" uid="uid://8odepm1f70rt" path="res://Assets/DARK Patreon Bundle/UI - Ammo/UI - Words/Words With BG/UI - Words3.png" id="5_0b325"]
+[ext_resource type="Script" path="res://Script/VolumeSlider.gd" id="7_enpp6"]
 [ext_resource type="Texture2D" uid="uid://2snmicjkfip0" path="res://Assets/DARK Patreon Bundle/UI - Ammo/UI - Words/Words With BG/UI - Words4.png" id="7_vmpns"]
 [ext_resource type="Script" path="res://SceneSapo/Score.gd" id="7_xkuky"]
 [ext_resource type="AudioStream" uid="uid://bnsghjm03yds1" path="res://Assets/Pixel RPG Music Pack/Ogg/Pixel 1.ogg" id="9_ildpe"]
@@ -83,7 +84,6 @@ offset_bottom = 210.0
 icon = ExtResource("7_vmpns")
 
 [node name="CanvasSetting" type="CanvasGroup" parent="MovementParralax"]
-visible = false
 
 [node name="Label" type="Label" parent="MovementParralax/CanvasSetting"]
 offset_left = 472.0
@@ -103,7 +103,26 @@ scale = Vector2(1.5, 1.5)
 button_pressed = true
 
 [node name="UI" parent="MovementParralax/CanvasSetting" instance=ExtResource("4_buby4")]
-layer_0/tile_data = PackedInt32Array(65543, 786432, 2, 65544, 851968, 2, 65545, 917504, 2, 65546, 983040, 2, 65547, 1048576, 2, 65548, 1114112, 2, 131081, 917504, 3, 131082, 983040, 3, 196622, 458752, 4, 262158, 458752, 5, 327694, 458752, 6, 196623, 524288, 4, 327695, 524288, 6, 196624, 524288, 4, 327696, 524288, 6, 196625, 524288, 4, 196626, 589824, 4, 327698, 589824, 6, 262162, 589824, 5, 327697, 524288, 6)
+layer_0/tile_data = PackedInt32Array(65543, 786432, 2, 65544, 851968, 2, 65545, 917504, 2, 65546, 983040, 2, 65547, 1048576, 2, 65548, 1114112, 2, 131081, 917504, 3, 131082, 983040, 3, 196622, 458752, 4, 262158, 458752, 5, 327694, 458752, 6, 196623, 524288, 4, 327695, 524288, 6, 196624, 524288, 4, 327696, 524288, 6, 196625, 524288, 4, 196626, 589824, 4, 327698, 589824, 6, 262162, 589824, 5, 327697, 524288, 6, 393230, 458752, 4, 458766, 458752, 5, 524302, 458752, 6, 393231, 524288, 4, 393232, 524288, 4, 393233, 524288, 4, 393234, 589824, 4, 458770, 589824, 5, 524306, 589824, 6, 524303, 524288, 6, 524304, 524288, 6, 524305, 524288, 6)
+
+[node name="VolumeSlider" type="HSlider" parent="MovementParralax/CanvasSetting"]
+offset_left = 471.0
+offset_top = 236.0
+offset_right = 584.0
+offset_bottom = 252.0
+max_value = 6.0
+step = 0.05
+value = 6.0
+script = ExtResource("7_enpp6")
+
+[node name="Label2" type="Label" parent="MovementParralax/CanvasSetting"]
+offset_left = 481.0
+offset_top = 201.0
+offset_right = 548.0
+offset_bottom = 242.0
+scale = Vector2(1.5, 1.5)
+text = "Volume
+"
 
 [node name="Score" type="Label" parent="MovementParralax"]
 offset_left = 6.0
@@ -141,4 +160,5 @@ stream = ExtResource("10_foapl")
 [connection signal="animation_finished" from="MovementParralax/transition" to="." method="_on_transition_animation_finished"]
 [connection signal="pressed" from="MovementParralax/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="MovementParralax/CanvasSetting/Fullscreen Button" to="." method="_on_fullscreen_button_pressed"]
+[connection signal="value_changed" from="MovementParralax/CanvasSetting/VolumeSlider" to="MovementParralax/CanvasSetting/VolumeSlider" method="_on_value_changed"]
 [connection signal="pressed" from="MovementParralax/Exit" to="." method="_on_exit_pressed"]
