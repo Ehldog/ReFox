@@ -149,6 +149,7 @@ scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_kcpu6")
 animation = &"idle"
 autoplay = "idle"
+frame_progress = 0.312645
 flip_h = true
 
 [node name="Collision_idle" type="CollisionShape2D" parent="."]
