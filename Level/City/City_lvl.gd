@@ -6,7 +6,7 @@ extends Node2D
 
 # preload obstacle ( spawner directement dans le code faute de temps)
 var pig_assassin = preload("res://Scenes/Monsters/Pig_Assassin.tscn")
-var troll = preload("res://Scenes/Monsters/Pig_Assassin.tscn")
+var troll = preload("res://Scenes/Monsters/Troll.tscn")
 var obstacle_types := [pig_assassin, troll]
 var obstacles: Array
 
@@ -19,6 +19,7 @@ const SCORE_MODIFIER : int = 10
 const SPEED_MODIFIER : int = 3000
 
 var score: int
+var ground_height: int
 var speed: float
 var cam_speed: float
 var cam_player_x: float
@@ -31,6 +32,7 @@ signal speed_var(speed_value)
 
 func _ready():
 	screen_size = get_viewport().size
+	ground_height = $GroundCityLvl.get_node("Sprite2D").texture.get_height()
 	new_game()
 
 func new_game():
@@ -73,16 +75,22 @@ func _process(delta):
 
  #obstacle spwaner (FAIRE LES COMMENTAIRES !!)
 func generate_obs():
-	if obstacles.is_empty():
+	if obstacles.is_empty() or last_obs.position.x < score + randi_range(500, 600):
 		var obs_type = obstacle_types[randi() % obstacle_types.size()]
 		var obs
 		obs = obs_type.instantiate()
 		var spriteheight = obs.get_node("AnimatedSprite2D").sprite_frames.get_frame_texture("idle", 0)
 		var obs_height = spriteheight.get_size()
+		var obs_x: int = screen_size.x + score + 100
+		var obs_y: int = screen_size.y - ground_height - (obs_height.y/2) + 5
 		last_obs = obs
-		add_child(obs)
-		obstacles.append(obs)
-		
+		add_obs(obs, obs_x, obs_y)
+
+func add_obs(obs, x, y):
+	obs.position = Vector2i(x, y)
+	add_child(obs)
+	obstacles.append(obs)
+	
 func show_score():
 	$Hud.get_node("ScoreLabel").text = " Score: " + str(score / SCORE_MODIFIER)
 
