@@ -1,21 +1,27 @@
-[gd_scene load_steps=6 format=3 uid="uid://c38pte8gxjce2"]
+[gd_scene load_steps=7 format=3 uid="uid://c38pte8gxjce2"]
 
 [ext_resource type="PackedScene" uid="uid://ddl3kmbdoin8q" path="res://Characters/Omen/player_omen.tscn" id="1_0n0dm"]
 [ext_resource type="Script" path="res://Level/City/City_lvl.gd" id="1_7rhb7"]
 [ext_resource type="PackedScene" uid="uid://c0te07er76rrm" path="res://Level/City/parallax_bg_CityLvl.tscn" id="1_jf1a7"]
 [ext_resource type="PackedScene" uid="uid://c10dpkakf00me" path="res://Level/City/Ground_CityLvl.tscn" id="1_t234q"]
 [ext_resource type="PackedScene" uid="uid://b4q4fehpg26jc" path="res://Scenes/HUD.tscn" id="2_xhxyh"]
+[ext_resource type="AudioStream" uid="uid://blooj37prdya5" path="res://Assets/Pixel RPG Music Pack/Ogg/Pixel 9.ogg" id="6_73cxo"]
 
 [node name="CityLvl" type="Node2D" node_paths=PackedStringArray("player_choice", "ground_choice")]
 script = ExtResource("1_7rhb7")
 player_choice = NodePath("Player_Omen")
 ground_choice = NodePath("GroundCityLvl")
-min_range_spawn = 100
+min_range_spawn = 50
+max_range_spawn = 300
 
 [node name="Player_Omen" parent="." instance=ExtResource("1_0n0dm")]
 z_index = 1
 position = Vector2(56, 293)
 scale = Vector2(2, 2)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Player_Omen"]
+stream = ExtResource("6_73cxo")
+autoplay = true
 
 [node name="Hud" parent="." instance=ExtResource("2_xhxyh")]
 

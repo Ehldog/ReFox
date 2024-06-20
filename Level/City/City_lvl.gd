@@ -8,6 +8,10 @@ extends Node2D
 @export var PLAYER_START_POS := Vector2i(60, 294)
 @export var START_SPEED : float = 10.0
 @export var min_range_spawn: int = 300
+@export var max_range_spawn: int = 500
+@export var MAX_SPEED : float = 5.0
+@export var SCORE_MODIFIER : int = 10
+@export var SPEED_MODIFIER : int = 3000
 
 # preload obstacle ( spawner directement dans le code faute de temps)
 var pig_assassin = preload("res://Scenes/Monsters/Pig_Assassin.tscn")
@@ -18,9 +22,9 @@ var obstacles: Array
 # game variables & const
 const CAM_START_POS := Vector2i(320, 180)
 
-const MAX_SPEED : float = 5.0
-const SCORE_MODIFIER : int = 10
-const SPEED_MODIFIER : int = 3000
+#const MAX_SPEED : float = 5.0
+#const SCORE_MODIFIER : int = 10
+#const SPEED_MODIFIER : int = 3000
 
 var score: int
 var ground_height: int
@@ -80,7 +84,7 @@ func _process(delta):
 
  #obstacle spwaner (FAIRE LES COMMENTAIRES !!)
 func generate_obs():
-	if obstacles.is_empty() or (last_obs.position.x - player_choice.position.x ) < score + randi_range(min_range_spawn, 500):
+	if obstacles.is_empty() or (last_obs.position.x - player_choice.position.x ) < score + randi_range(min_range_spawn, max_range_spawn):
 		var obs_type = obstacle_types[randi() % obstacle_types.size()]
 		var obs
 		obs = obs_type.instantiate()

@@ -53,14 +53,11 @@ script = ExtResource("3_xsqfj")
 position = Vector2(320, 180)
 
 [node name="bck" type="Button" parent="MovementParralax"]
-offset_left = 259.0
+offset_left = 270.0
 offset_top = 69.0
-offset_right = 360.0
+offset_right = 371.0
 offset_bottom = 110.0
 icon = ExtResource("4_kr4ad")
-
-[node name="UI2" parent="MovementParralax" instance=ExtResource("2_6gdto")]
-layer_0/tile_data = PackedInt32Array(327684, 524288, 4, 327685, 524288, 4, 327686, 589824, 4, 393222, 589824, 5, 458758, 589824, 5, 524293, 524288, 6, 524292, 524288, 6, 524291, 458752, 6, 458755, 458752, 5, 393219, 458752, 5, 327683, 458752, 4, 327696, 786432, 4, 327695, 720896, 4, 327694, 720896, 4, 327693, 655360, 4, 393229, 655360, 5, 458765, 655360, 5, 524301, 655360, 6, 524302, 720896, 6, 524303, 720896, 6, 524304, 786432, 6, 458768, 786432, 5, 393232, 786432, 5, 524294, 589824, 6)
 
 [node name="transition" type="AnimationPlayer" parent="MovementParralax"]
 root_node = NodePath("../..")
@@ -77,37 +74,39 @@ scale = Vector2(2, 2)
 color = Color(0, 0, 0, 1)
 
 [node name="CheckButton" type="CheckButton" parent="MovementParralax"]
-offset_left = 294.0
-offset_top = 200.0
-offset_right = 338.0
-offset_bottom = 224.0
+offset_left = 271.0
+offset_top = 207.0
+offset_right = 315.0
+offset_bottom = 231.0
 
 [node name="City" type="Label" parent="MovementParralax"]
-offset_left = 268.0
-offset_top = 202.0
-offset_right = 305.0
-offset_bottom = 225.0
+offset_left = 237.0
+offset_top = 206.0
+offset_right = 274.0
+offset_bottom = 229.0
 text = "City"
 
 [node name="Underground" type="Label" parent="MovementParralax"]
-offset_left = 333.0
-offset_top = 188.0
-offset_right = 446.0
-offset_bottom = 244.0
-text = "Under
-ground"
+offset_left = 313.0
+offset_top = 206.0
+offset_right = 417.0
+offset_bottom = 262.0
+text = "Underground"
 
 [node name="ButtonPlayer" type="Button" parent="MovementParralax"]
 offset_left = 103.0
-offset_top = 170.0
+offset_top = 106.0
 offset_right = 214.0
 offset_bottom = 276.0
 
 [node name="ButtonPlayer2" type="Button" parent="MovementParralax"]
-offset_left = 423.0
+offset_left = 427.0
 offset_top = 170.0
-offset_right = 534.0
+offset_right = 598.0
 offset_bottom = 276.0
+
+[node name="UI2" parent="MovementParralax" instance=ExtResource("2_6gdto")]
+layer_0/tile_data = PackedInt32Array(327686, 589824, 5, 393222, 589824, 5, 458758, 589824, 5, 524293, 524288, 6, 524292, 524288, 6, 524291, 458752, 6, 458755, 458752, 5, 393219, 458752, 5, 327683, 458752, 5, 327696, 720896, 4, 327695, 720896, 4, 327694, 720896, 4, 327693, 655360, 4, 393229, 655360, 5, 458765, 655360, 5, 524301, 655360, 6, 524302, 720896, 6, 524303, 720896, 6, 524304, 720896, 6, 524294, 589824, 6, 196611, 458752, 4, 196614, 589824, 4, 196613, 524288, 4, 196612, 524288, 4, 262150, 589824, 5, 262147, 458752, 5, 327698, 786432, 4, 524305, 720896, 6, 524306, 786432, 6, 327697, 720896, 4, 458770, 786432, 5, 393234, 786432, 5)
 
 [node name="Player_Omen" parent="MovementParralax" instance=ExtResource("5_solou")]
 position = Vector2(175, 216)
