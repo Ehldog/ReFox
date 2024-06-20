@@ -274,8 +274,8 @@ limit_top = 114
 limit_bottom = -114
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_vsgx1")
-hframes = 8
+texture = ExtResource("1_gtkpr")
+hframes = 12
 
 [node name="Collision_idle" type="CollisionShape2D" parent="."]
 position = Vector2(-7.5, 11)

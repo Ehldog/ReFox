@@ -1,9 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://mxfku4tw7mdh"]
+[gd_scene load_steps=31 format=3 uid="uid://mxfku4tw7mdh"]
 
+[ext_resource type="Texture2D" uid="uid://d1ur68a0k3ugw" path="res://Assets/Glitch Samurai/Glitch Samurai-Run.png" id="1_0xbrg"]
+[ext_resource type="Texture2D" uid="uid://cwmg7k30b0jll" path="res://Assets/Glitch Samurai/Glitch Samurai-Jump Glitch.png" id="1_nv6cl"]
 [ext_resource type="PackedScene" uid="uid://deut0bi01cso8" path="res://Component/camera/camera_component.tscn" id="2_jbr4y"]
 [ext_resource type="PackedScene" uid="uid://d1x5k4xr5t6ph" path="res://Component/animation_component.tscn" id="2_koyus"]
+[ext_resource type="Texture2D" uid="uid://cbp7g0t7niyvs" path="res://Assets/Glitch Samurai/Glitch Samurai-Idle.png" id="2_ugbx5"]
 [ext_resource type="PackedScene" uid="uid://dk7tplt3m1gq6" path="res://Component/CollisionComponent.tscn" id="3_febhw"]
 [ext_resource type="PackedScene" uid="uid://2u3f38bv1fs8" path="res://Component/gravity_component.tscn" id="4_cdmxd"]
+[ext_resource type="Texture2D" uid="uid://n636iie0hp5o" path="res://Assets/Glitch Samurai/Glitch Samurai-Fall.png" id="4_fe7h5"]
 [ext_resource type="PackedScene" uid="uid://dwqsil20q5g1x" path="res://Component/input_component.tscn" id="5_vqy2d"]
 [ext_resource type="PackedScene" uid="uid://cmliirm4gwimm" path="res://Component/movement_component.tscn" id="6_xkayk"]
 [ext_resource type="PackedScene" uid="uid://bjq4pbuawg5ic" path="res://Component/Jump/jump_component.tscn" id="7_xeots"]
@@ -50,7 +54,7 @@ func _physics_process(delta):
 	camera_player.emit(camera_pos)
 	
 	# les collisions
-	collision_component.handle_collision(self, input_component.input_horizontal, jump_component.is_going_up, gravity_component.is_falling)
+	#collision_component.handle_collision(self, input_component.input_horizontal, jump_component.is_going_up, gravity_component.is_falling)
 	
 	move_and_slide()
 	update_animation()
@@ -68,6 +72,236 @@ func _on_city_lvl_speed_var(speed_value):
 	speed_auto.emit(speed)
 "
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3led8"]
+size = Vector2(14, 25)
+
+[sub_resource type="Animation" id="Animation_x7uu1"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_ugbx5")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [11]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+
+[sub_resource type="Animation" id="Animation_5yiem"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_bqwtx"]
+resource_name = "run"
+length = 1.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_0xbrg")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [12]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+}
+
+[sub_resource type="Animation" id="Animation_8vnvq"]
+resource_name = "fall"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_fe7h5")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_vbb3q"]
+resource_name = "glitch"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_nv6cl")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n0x46"]
+_data = {
+"RESET": SubResource("Animation_5yiem"),
+"fall": SubResource("Animation_8vnvq"),
+"idle": SubResource("Animation_x7uu1"),
+"jump": SubResource("Animation_vbb3q"),
+"run": SubResource("Animation_bqwtx")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2625l"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6vlsc"]
+animation = &"run"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_o5owq"]
+animation = &"run"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_4j3sd"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_2625l")
+blend_point_0/pos = 0.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_6vlsc")
+blend_point_1/pos = 1.0
+blend_point_2/node = SubResource("AnimationNodeAnimation_o5owq")
+blend_point_2/pos = -1.0
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_aveit"]
+animation = &"fall"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_t57t2"]
+animation = &"jump"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_apkmk"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_l4w5y"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ueyew"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_g5fpd"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_messq"]
+states/Move/node = SubResource("AnimationNodeBlendSpace1D_4j3sd")
+states/Move/position = Vector2(328, 100)
+states/fall/node = SubResource("AnimationNodeAnimation_aveit")
+states/fall/position = Vector2(506, 100)
+states/jump/node = SubResource("AnimationNodeAnimation_t57t2")
+states/jump/position = Vector2(428, 42)
+transitions = ["Start", "Move", SubResource("AnimationNodeStateMachineTransition_apkmk"), "Move", "jump", SubResource("AnimationNodeStateMachineTransition_l4w5y"), "jump", "fall", SubResource("AnimationNodeStateMachineTransition_ueyew"), "fall", "Move", SubResource("AnimationNodeStateMachineTransition_g5fpd")]
+
 [node name="PlayerGlitch" type="CharacterBody2D" node_paths=PackedStringArray("gravity_component", "input_component", "movement_component", "jump_component", "animation_component", "animation_tree", "camera_component", "collision_component")]
 script = SubResource("GDScript_iwfua")
 gravity_component = NodePath("Component/GravityComponent")
@@ -80,19 +314,34 @@ camera_component = NodePath("Component/CameraComponent")
 collision_component = NodePath("Component/CollisionComponent")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(260, -114)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_nv6cl")
+hframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-5, 9.5)
+shape = SubResource("RectangleShape2D_3led8")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_n0x46")
+}
+autoplay = "idle"
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_messq")
+anim_player = NodePath("../AnimationPlayer")
+parameters/Move/blend_position = 0
 
 [node name="Component" type="Node" parent="."]
 
 [node name="CameraComponent" parent="Component" node_paths=PackedStringArray("camera2D") instance=ExtResource("2_jbr4y")]
 camera2D = NodePath("../../Camera2D")
 
-[node name="AnimationComponent" parent="Component" instance=ExtResource("2_koyus")]
+[node name="AnimationComponent" parent="Component" node_paths=PackedStringArray("sprite") instance=ExtResource("2_koyus")]
+sprite = NodePath("../../Sprite2D")
 
 [node name="CollisionComponent" parent="Component" instance=ExtResource("3_febhw")]
 
@@ -101,8 +350,12 @@ camera2D = NodePath("../../Camera2D")
 [node name="InputComponent" parent="Component" instance=ExtResource("5_vqy2d")]
 
 [node name="MovementComponent" parent="Component" instance=ExtResource("6_xkayk")]
+speed = 1.0
+air_accel_speed = 8.0
 
-[node name="JumpComponent" parent="Component" instance=ExtResource("7_xeots")]
+[node name="JumpComponent" parent="Component" node_paths=PackedStringArray("jump_buffer_timer", "coyote_timer") instance=ExtResource("7_xeots")]
+jump_buffer_timer = NodePath("../../JumpBuffer")
+coyote_timer = NodePath("../../CoyoteTimer")
 
 [node name="JumpBuffer" type="Timer" parent="."]
 wait_time = 0.1
