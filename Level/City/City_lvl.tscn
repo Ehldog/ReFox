@@ -10,6 +10,7 @@
 script = ExtResource("1_7rhb7")
 player_choice = NodePath("Player_Omen")
 ground_choice = NodePath("GroundCityLvl")
+min_range_spawn = 100
 
 [node name="Player_Omen" parent="." instance=ExtResource("1_0n0dm")]
 z_index = 1
