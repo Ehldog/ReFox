@@ -1,10 +1,47 @@
-[gd_scene load_steps=6 format=3 uid="uid://cpybgvisy2jcv"]
+[gd_scene load_steps=13 format=3 uid="uid://cpybgvisy2jcv"]
 
 [ext_resource type="Script" path="res://Level/Underground/Underground.gd" id="1_i84vo"]
 [ext_resource type="PackedScene" uid="uid://ddl3kmbdoin8q" path="res://Characters/Omen/player_omen.tscn" id="2_65xmm"]
+[ext_resource type="AudioStream" uid="uid://dfaqyimx2beh2" path="res://Assets/Pixel RPG Music Pack/Ogg/Pixel 7.ogg" id="3_6ylfi"]
 [ext_resource type="PackedScene" uid="uid://b4q4fehpg26jc" path="res://Scenes/HUD.tscn" id="3_r641r"]
 [ext_resource type="PackedScene" uid="uid://bddk86gaj6w8g" path="res://Level/Underground/Ground_UndergroundLvl.tscn" id="3_tle1y"]
 [ext_resource type="PackedScene" uid="uid://bnwc40v511u57" path="res://Level/Underground/parallax_bg_Underground.tscn" id="4_2epdl"]
+[ext_resource type="AudioStream" uid="uid://cb5okfn8d88yo" path="res://Assets/Sound Effects/88_Teleport_02.wav" id="4_44w6e"]
+[ext_resource type="AudioStream" uid="uid://dxjmse6cfcdij" path="res://Assets/Sound Effects/45_Charge_05.wav" id="5_rn73c"]
+[ext_resource type="AudioStream" uid="uid://u7jfusjtbawu" path="res://Assets/Sound Effects/48_Speed_up_02.wav" id="6_e8n3e"]
+[ext_resource type="AudioStream" uid="uid://buafslhor0nk" path="res://Assets/Sound Effects/61_Hit_03.wav" id="7_x6i6t"]
+
+[sub_resource type="Animation" id="Animation_3hi17"]
+resource_name = "fade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("trans/ColorRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("trans/ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qtp1g"]
+_data = {
+"fade": SubResource("Animation_3hi17")
+}
 
 [node name="Underground" type="Node2D" node_paths=PackedStringArray("player_choice", "ground_choice")]
 script = ExtResource("1_i84vo")
@@ -15,6 +52,36 @@ ground_choice = NodePath("GroundUndergroundLvl")
 z_index = 3
 position = Vector2(56, 293)
 scale = Vector2(2, 2)
+
+[node name="music" type="AudioStreamPlayer2D" parent="Player_Omen"]
+stream = ExtResource("3_6ylfi")
+autoplay = true
+
+[node name="Invu" type="AudioStreamPlayer2D" parent="Player_Omen"]
+stream = ExtResource("4_44w6e")
+
+[node name="RetourInvu" type="AudioStreamPlayer2D" parent="Player_Omen"]
+stream = ExtResource("5_rn73c")
+volume_db = -10.0
+
+[node name="SpeedUp" type="AudioStreamPlayer2D" parent="Player_Omen"]
+stream = ExtResource("6_e8n3e")
+
+[node name="ded" type="AudioStreamPlayer2D" parent="Player_Omen"]
+stream = ExtResource("7_x6i6t")
+
+[node name="trans" type="AnimationPlayer" parent="Player_Omen"]
+libraries = {
+"": SubResource("AnimationLibrary_qtp1g")
+}
+
+[node name="ColorRect" type="ColorRect" parent="Player_Omen/trans"]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+offset_right = 794.0
+offset_bottom = 418.0
+scale = Vector2(2, 2)
+color = Color(0, 0, 0, 1)
 
 [node name="GroundUndergroundLvl" parent="." instance=ExtResource("3_tle1y")]
 position = Vector2(0, -358)
@@ -32,6 +99,7 @@ scale = Vector2(2, 2)
 
 [connection signal="speed_var" from="." to="Player_Omen" method="_on_underground_speed_var"]
 [connection signal="camera_player" from="Player_Omen" to="." method="_on_player_omen_camera_player"]
+[connection signal="animation_finished" from="Player_Omen/trans" to="." method="_on_trans_animation_finished"]
 [connection signal="timeout" from="InvicibleTimer" to="." method="_on_invicible_timer_timeout"]
 [connection signal="timeout" from="InvicibleChargeTimer" to="." method="_on_invicible_charge_timer_timeout"]
 [connection signal="timeout" from="InvicibleHudTimer" to="." method="_on_invicible_hud_timer_timeout"]

@@ -1,7 +1,7 @@
 # https://youtu.be/nKBhz6oJYsc?si=PZQL3FwiR03I1sgy
 
 extends Node2D
-
+@onready var transition = $Player_Omen/trans
 @export_subgroup("Node")
 @export var player_choice = CharacterBody2D
 @export var ground_choice = StaticBody2D
@@ -13,7 +13,6 @@ extends Node2D
 @export var min_range_spawn: int = 300
 @export var max_range_spawn: int = 500
 @export var MAX_SPEED : float = 5.0
-@export var SCORE_MODIFIER : int = 10
 @export var SPEED_MODIFIER : int = 3000
 @export var MIN_DIFFICULTY : int = 1
 @export var MEDIUM_DIFFICULTY: int = 3
@@ -44,7 +43,6 @@ var sprites: Array
 
 # game variables
 var score: int
-var highscore: int
 var ground_height: int
 var speed: float
 var cam_speed: float
@@ -64,13 +62,13 @@ func _ready():
 	# set screen_size variable and ground height
 	screen_size = Vector2i(640, 360)
 	ground_height = $GroundUndergroundLvl.get_node("Sprite2D").texture.get_height()
+	$Hud.get_node("HighScoreLabel").text = "High Score: " + str(Global.globalscore / Global.SCORE_MODIFIER) + " "
 	
 	new_game()
 
 func new_game():
 	# reset variables
 	score = 0
-	highscore = 0
 	show_score()
 	game_running = false
 	difficulty = 0
@@ -112,6 +110,7 @@ func _physics_process(delta):
 		
 		# Move player
 		player_choice.position.x += speed
+		$Player_Omen/trans/ColorRect.position.x =+ player_choice.position.x - 140
 		
 		# Update ground position
 		if cam_player_x - ground_choice.position.x > screen_size.x:
@@ -194,12 +193,12 @@ func hit_obs(body):
 		game_over()
 		
 func show_score():
-	$Hud.get_node("ScoreLabel").text = " Score: " + str(score / SCORE_MODIFIER)
+	$Hud.get_node("ScoreLabel").text = " Score: " + str(score / Global.SCORE_MODIFIER)
 
 func check_high_score():
-	if score > highscore:
-		highscore = score
-		$Hud.get_node("HighScoreLabel").text = "High Score: " + str(highscore / SCORE_MODIFIER) + " "
+	if score > Global.globalscore:
+		Global.globalscore = score
+		$Hud.get_node("HighScoreLabel").text = "High Score: " + str(Global.globalscore / Global.SCORE_MODIFIER) + " "
 
 func invicible_activation():
 	if difficulty == MEDIUM_DIFFICULTY:
@@ -211,11 +210,16 @@ func invicible_activation():
 		$InvicibleTimer.start()
 		$InvicibleHudTimer.start()
 		invicible_statut = true
+		$Player_Omen.modulate = Color(1,1,1,0.7)
+		$Player_Omen/Invu.play()
 	
 func game_over():
+	$Player_Omen/ded.play()
 	check_high_score()
-	get_tree().paused = true
+	invicible_power = false
+	#get_tree().paused = true
 	game_running= false
+	transition.play("fade")
 
 func adjust_difficulty():
 	difficulty = score / SPEED_MODIFIER
@@ -235,5 +239,8 @@ func _on_invicible_hud_timer_timeout():
 	$Hud.get_node("Control/ProgressBar").value -= 1
 
 func _on_invicible_charge_timer_timeout():
-	invicible_statut = true
+	$Player_Omen/RetourInvu.play()
 	$Hud.get_node("Control/ProgressBar").value = 10
+	
+func _on_trans_animation_finished(anim_name):
+	get_tree().change_scene_to_file("res://SceneSapo/gameover.tscn")

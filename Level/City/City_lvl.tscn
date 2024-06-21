@@ -105,7 +105,7 @@ color = Color(0, 0, 0, 1)
 
 [node name="music" type="AudioStreamPlayer2D" parent="Player_Omen"]
 stream = ExtResource("6_73cxo")
-volume_db = -20.0
+volume_db = -5.0
 autoplay = true
 
 [node name="Invu" type="AudioStreamPlayer2D" parent="Player_Omen"]
