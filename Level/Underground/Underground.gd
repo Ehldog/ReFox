@@ -79,7 +79,7 @@ func new_game():
 	ground_choice.position = Vector2i(0, -358)
 	
 	# reset all obstacles
-	obstacle_types = [flower_enemy, pig_assassin, troll]
+	obstacle_types = [elec_bot, small_monster, troll, elec_bot]
 	
 	for obs in obstacles:
 		obs.queue_free()
