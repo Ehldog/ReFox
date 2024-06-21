@@ -1,56 +1,55 @@
 [gd_scene load_steps=7 format=3 uid="uid://bnwc40v511u57"]
 
-[ext_resource type="Texture2D" uid="uid://cbdf6xea7itty" path="res://Assets/DARK - Beneath Tileset/Parallax/background.png" id="1_5sufc"]
-[ext_resource type="Texture2D" uid="uid://c63ndujn1dyum" path="res://Assets/DARK - Beneath Tileset/Parallax/pillars.png" id="2_xmpu5"]
-[ext_resource type="Texture2D" uid="uid://5wj7cwdjshiq" path="res://Assets/DARK - Beneath Tileset/Parallax/bridge.png" id="3_8wbo0"]
-[ext_resource type="Texture2D" uid="uid://d1x64etgwd4ke" path="res://Assets/DARK - Beneath Tileset/Parallax/cages.png" id="4_5x773"]
-[ext_resource type="Texture2D" uid="uid://bpykgx0e162ar" path="res://Assets/DARK - Beneath Tileset/Parallax/fog.png" id="5_qkhxj"]
-[ext_resource type="Texture2D" uid="uid://b2mlmwockt28o" path="res://Assets/DARK - Beneath Tileset/Parallax/fogin front.png" id="6_dkoc4"]
+[ext_resource type="Texture2D" uid="uid://biddtt4yl4lde" path="res://Assets/Mountain Villagers/Color 2/BG2.png" id="1_ey51c"]
+[ext_resource type="Texture2D" uid="uid://bcl5llmbbk02l" path="res://Assets/Mountain Villagers/Color 2/Sun2.png" id="2_2t8h4"]
+[ext_resource type="Texture2D" uid="uid://lkpg8po756r5" path="res://Assets/Mountain Villagers/Color 2/Far2.png" id="2_5n6yx"]
+[ext_resource type="Texture2D" uid="uid://b343hu0qvpfq1" path="res://Assets/Mountain Villagers/Color 2/FG2.png" id="3_e5h0r"]
+[ext_resource type="Texture2D" uid="uid://dhitkkoxaetep" path="res://Assets/Mountain Villagers/Color 2/Mid2.png" id="4_1ypa2"]
+[ext_resource type="Texture2D" uid="uid://u22u64pj2plg" path="res://Assets/Mountain Villagers/Color 2/Fog2.png" id="6_0atah"]
 
 [node name="ParallaxBgUnderground" type="ParallaxBackground"]
-scale = Vector2(2, 2)
-transform = Transform2D(2, 0, 0, 2, 0, 0)
+scale = Vector2(2.2, 2.2)
+transform = Transform2D(2.2, 0, 0, 2.2, 0, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_5sufc")
+texture = ExtResource("1_ey51c")
 centered = false
 
-[node name="ParallaxPillar" type="ParallaxLayer" parent="."]
+[node name="ParallaxSun" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.001, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxSun"]
+texture = ExtResource("2_2t8h4")
+centered = false
+
+[node name="ParallaxFar" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.1, 1)
+motion_mirroring = Vector2(323, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxFar"]
+texture = ExtResource("2_5n6yx")
+centered = false
+
+[node name="ParallaxMid" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.2, 1)
-motion_mirroring = Vector2(371, 0)
+motion_mirroring = Vector2(323, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxPillar"]
-texture = ExtResource("2_xmpu5")
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxMid"]
+texture = ExtResource("4_1ypa2")
 centered = false
 
-[node name="ParallaxBridge" type="ParallaxLayer" parent="."]
-motion_scale = Vector2(0.3, 1)
-motion_mirroring = Vector2(371, 0)
+[node name="ParallaxFG" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.25, 1)
+motion_mirroring = Vector2(323, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBridge"]
-texture = ExtResource("3_8wbo0")
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxFG"]
+texture = ExtResource("3_e5h0r")
 centered = false
 
-[node name="ParallaxCages" type="ParallaxLayer" parent="."]
-motion_scale = Vector2(0.4, 1)
-motion_mirroring = Vector2(371, 0)
+[node name="ParallaxFog" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.35, 1)
+motion_mirroring = Vector2(323, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxCages"]
-texture = ExtResource("4_5x773")
-centered = false
-
-[node name="Parallaxfog" type="ParallaxLayer" parent="."]
-motion_scale = Vector2(0.5, 1)
-motion_mirroring = Vector2(371, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="Parallaxfog"]
-texture = ExtResource("5_qkhxj")
-centered = false
-
-[node name="Parallaxfog_front" type="ParallaxLayer" parent="."]
-motion_scale = Vector2(0.6, 1)
-motion_mirroring = Vector2(371, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="Parallaxfog_front"]
-texture = ExtResource("6_dkoc4")
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxFog"]
+texture = ExtResource("6_0atah")
 centered = false
