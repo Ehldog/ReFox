@@ -28,11 +28,13 @@ func _on_transition_animation_finished(anim_name):
 
 
 func _on_button_player_pressed():
+	SelectNoise.play()
 	Global.joueur = false
 	print(Global.joueur)
 
 
 func _on_button_player_2_pressed():
+	SelectNoise.play()
 	Global.joueur = true
 	print(Global.joueur)
 
