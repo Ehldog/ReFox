@@ -88,10 +88,10 @@ script = ExtResource("3_xsqfj")
 position = Vector2(320, 180)
 
 [node name="bck" type="Button" parent="MovementParralax"]
-offset_left = 270.0
-offset_top = 69.0
-offset_right = 371.0
-offset_bottom = 110.0
+offset_left = 271.0
+offset_top = 78.0
+offset_right = 372.0
+offset_bottom = 119.0
 icon = ExtResource("4_kr4ad")
 
 [node name="Start" type="Button" parent="MovementParralax"]
@@ -181,6 +181,15 @@ visible = false
 offset_right = 1031.0
 offset_bottom = 536.0
 color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="MovementParralax"]
+offset_left = 177.0
+offset_top = 2.0
+offset_right = 472.0
+offset_bottom = 62.0
+text = "Space: JUMP
+Enter: Short Invulnerability  
+(Unlocked after the score goes above 2700)"
 
 [node name="OSTMENU" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_0dl53")
