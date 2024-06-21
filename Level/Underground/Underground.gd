@@ -81,7 +81,7 @@ func new_game():
 	ground_choice.position = Vector2i(0, -358)
 	
 	# reset all obstacles
-	obstacle_types = [flower_enemy, pig_assassin, troll]
+	obstacle_types = [elec_bot, small_monster, troll]
 	
 	for obs in obstacles:
 		obs.queue_free()
@@ -139,7 +139,7 @@ func _physics_process(delta):
 			game_running = true
 			$Hud.get_node("SpaceLabel").hide()
 
- #obstacle / sprites spwaner (FAIRE LES COMMENTAIRES !!)
+#obstacle / sprites spwaner (FAIRE LES COMMENTAIRES !!)
 func generate_obs():
 	if difficulty == MIN_DIFFICULTY:
 		obstacle_types = obstacle_types_min_diff
@@ -170,6 +170,7 @@ func generate_sprite():
 		last_sprite = sprite
 		add_sprite(sprite, sprite_x + player_choice.position.x, sprite_y)
 
+# add obstacles & sprites
 func add_obs(obs, x, y):
 	obs.position = Vector2i(x, y)
 	obs.body_entered.connect(hit_obs)
@@ -181,6 +182,7 @@ func add_sprite(sprite, x, y):
 	add_child(sprite)
 	sprites.append(sprite)
 
+# remove obstacles & sprites
 func remove_obs(obs):
 	obs.queue_free()
 	obstacles.erase(obs)
@@ -189,10 +191,12 @@ func remove_sprite(sprite):
 	sprite.queue_free()
 	sprites.erase(sprite)
 
+# on hit condition: game over or invicibility
 func hit_obs(body):
 	if body.name == "Player_Omen" && not invicible_statut:
 		game_over()
-		
+
+# score & highscore
 func show_score():
 	$Hud.get_node("ScoreLabel").text = " Score: " + str(score / SCORE_MODIFIER)
 
@@ -201,17 +205,20 @@ func check_high_score():
 		highscore = score
 		$Hud.get_node("HighScoreLabel").text = "High Score: " + str(highscore / SCORE_MODIFIER) + " "
 
+# power up activation
 func invicible_activation():
 	if difficulty == MEDIUM_DIFFICULTY:
 		invicible_power = true
 		$Hud.get_node("18").show()
 		$Hud.get_node("Control/ProgressBar").show()
-		
+	
+	# power up use
 	if invicible_power && Input.is_action_just_pressed("bite"):
 		$InvicibleTimer.start()
 		$InvicibleHudTimer.start()
 		invicible_statut = true
-	
+
+# game over & difficulty adjustement
 func game_over():
 	check_high_score()
 	get_tree().paused = true
@@ -222,6 +229,7 @@ func adjust_difficulty():
 	if difficulty > MAX_DIFFICULTY:
 		difficulty = MAX_DIFFICULTY
 
+# all signal
 func _on_player_omen_camera_player(camera_pos_x):
 	cam_player_x = camera_pos_x 
 

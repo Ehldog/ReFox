@@ -352,9 +352,6 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_jbbk4")
-}
 tree_root = SubResource("AnimationNodeStateMachine_4da7x")
 anim_player = NodePath("../AnimationPlayer")
 parameters/Move/blend_position = 0
