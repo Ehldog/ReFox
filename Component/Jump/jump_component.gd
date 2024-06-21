@@ -82,6 +82,7 @@ func handle_coyote_time(body: CharacterBody2D) -> void:
 func jump(body: CharacterBody2D) -> void:
 	body.velocity.y = jump_velocity		# on applique la force du saut
 	is_jumping = true
+	$"../../JumpSound".play()
 	jump_buffer_timer.stop()			# on stoppe le timer du buffer une fois le saut complétement réalisé
 	coyote_timer.stop()
 	
