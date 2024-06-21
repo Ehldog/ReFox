@@ -28,9 +28,9 @@ var troll_and_pigs = preload("res://Scenes/Monsters/Troll_and_pigs.tscn")
 var flower_enemy = preload("res://Scenes/Monsters/flower_enemy.tscn")
 var flowers_enemy = preload("res://Scenes/Monsters/flowers_enemy.tscn")
 var flowerssss_enemy = preload("res://Scenes/Monsters/flowerssss_enemy.tscn")
-var obstacle_types := [elec_bot, small_monster, troll]
-var obstacle_types_min_diff := [flower_enemy, small_monster, flowers_enemy, elec_bot]
-var obstacle_types_medium_diff := [troll, flowers_enemy, pigs_assassin, pig_assassin]
+var obstacle_types := [elec_bot, small_monster, troll, elec_bot]
+var obstacle_types_min_diff := [elec_bot, flower_enemy, small_monster, flowers_enemy, elec_bot]
+var obstacle_types_medium_diff := [troll, flowers_enemy, pigs_assassin, pig_assassin, elec_bot]
 var obstacle_types_max_diff := [flowers_enemy, flowerssss_enemy, pigs_assassin, troll_and_pigs]
 var obstacles: Array
 

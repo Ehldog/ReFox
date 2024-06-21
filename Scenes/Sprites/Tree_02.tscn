@@ -5,10 +5,8 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_x5ew8"]
 
 [node name="Tree02" type="Area2D"]
-z_index = 5
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-z_index = 5
 scale = Vector2(2, 2)
 texture = ExtResource("1_3p6gb")
 

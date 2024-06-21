@@ -284,6 +284,7 @@ height = 64.0
 
 [node name="FlowersEnemy" type="Area2D"]
 modulate = Color(6, 8, 1, 1)
+z_index = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 2)

@@ -1,29 +1,29 @@
 [gd_scene load_steps=10 format=3 uid="uid://dh625nuc5kaht"]
 
-[ext_resource type="Texture2D" uid="uid://drmndfy027hom" path="res://Assets/Monsters/Small Monster/small moidle.png" id="1_1f5r7"]
+[ext_resource type="Texture2D" uid="uid://drmndfy027hom" path="res://Assets/Monsters/Small Monster/small moidle.png" id="1_ttek2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_smrum"]
-atlas = ExtResource("1_1f5r7")
+atlas = ExtResource("1_ttek2")
 region = Rect2(0, 0, 82, 39)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4qaqi"]
-atlas = ExtResource("1_1f5r7")
+atlas = ExtResource("1_ttek2")
 region = Rect2(0, 39, 82, 39)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_471ok"]
-atlas = ExtResource("1_1f5r7")
+atlas = ExtResource("1_ttek2")
 region = Rect2(0, 78, 82, 39)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p883n"]
-atlas = ExtResource("1_1f5r7")
+atlas = ExtResource("1_ttek2")
 region = Rect2(0, 117, 82, 39)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_paji5"]
-atlas = ExtResource("1_1f5r7")
+atlas = ExtResource("1_ttek2")
 region = Rect2(0, 156, 82, 39)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iynxd"]
-atlas = ExtResource("1_1f5r7")
+atlas = ExtResource("1_ttek2")
 region = Rect2(0, 195, 82, 39)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_e7e0g"]

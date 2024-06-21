@@ -301,6 +301,7 @@ states/jump/position = Vector2(427, 39)
 transitions = ["jump", "fall", SubResource("AnimationNodeStateMachineTransition_h05qb"), "Start", "Move", SubResource("AnimationNodeStateMachineTransition_ufs4n"), "Move", "jump", SubResource("AnimationNodeStateMachineTransition_gf4nr"), "fall", "Move", SubResource("AnimationNodeStateMachineTransition_2vdt6")]
 
 [node name="Player_Omen" type="CharacterBody2D" node_paths=PackedStringArray("gravity_component", "input_component", "movement_component", "jump_component", "animation_component", "animation_tree", "camera_component", "collision_component")]
+z_index = 2
 script = ExtResource("1_1kcb3")
 gravity_component = NodePath("Components/GravityComponent")
 input_component = NodePath("Components/InputComponent")
