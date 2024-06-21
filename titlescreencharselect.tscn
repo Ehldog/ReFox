@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://Script/MovementParralax.gd" id="3_xsqfj"]
 [ext_resource type="Texture2D" uid="uid://cl42oiee6a5oi" path="res://Assets/DARK Patreon Bundle/UI - Ammo/UI - Words/Words With BG/UI - Words8.png" id="4_kr4ad"]
 [ext_resource type="PackedScene" uid="uid://ddl3kmbdoin8q" path="res://Characters/Omen/player_omen.tscn" id="5_solou"]
-[ext_resource type="Texture2D" uid="uid://doacreryjckst" path="res://Assets/DARK - Vic Para & Assets/Assets/tree03.png" id="7_jncdv"]
+[ext_resource type="Texture2D" uid="uid://sbe4pw3wsrxx" path="res://Assets/SingleCity.png" id="7_60he4"]
 [ext_resource type="AudioStream" uid="uid://d3105guf5xhmn" path="res://Assets/Pixel RPG Music Pack/Ogg/Pixel 3.ogg" id="8_0dl53"]
 [ext_resource type="Texture2D" uid="uid://cpp0rmn7jarq6" path="res://Assets/DARK Patreon Bundle/UI - Ammo/UI - Words/Words With BG/UI - Words5.png" id="9_6kg8p"]
 [ext_resource type="AudioStream" uid="uid://bqu6ln82wjm61" path="res://Assets/Sound Effects/10_UI_Menu_SFX/013_Confirm_03.wav" id="9_c3a63"]
@@ -121,9 +121,6 @@ offset_top = 106.0
 offset_right = 214.0
 offset_bottom = 276.0
 
-[node name="UI2" parent="MovementParralax" instance=ExtResource("2_6gdto")]
-layer_0/tile_data = PackedInt32Array(327686, 589824, 5, 393222, 589824, 5, 458758, 589824, 5, 524293, 524288, 6, 524292, 524288, 6, 524291, 458752, 6, 458755, 458752, 5, 393219, 458752, 5, 327683, 458752, 5, 458765, 655360, 5, 524301, 655360, 6, 524302, 720896, 6, 524303, 720896, 6, 524294, 589824, 6, 196611, 458752, 4, 196614, 589824, 4, 196613, 524288, 4, 196612, 524288, 4, 262150, 589824, 5, 262147, 458752, 5, 393224, 458752, 0, 458760, 458752, 1, 393225, 524288, 0, 458761, 524288, 1, 393226, 589824, 0, 458762, 589824, 1, 393227, 655360, 0, 458763, 655360, 1, 524304, 786432, 6, 458768, 786432, 5, 393232, 786432, 5, 327696, 786432, 5, 262160, 786432, 5, 393229, 655360, 5, 327693, 655360, 5, 262157, 655360, 5, 196621, 655360, 4, 196622, 720896, 4, 196623, 720896, 4, 196624, 786432, 4)
-
 [node name="Player_Omen" parent="MovementParralax" instance=ExtResource("5_solou")]
 position = Vector2(336, 183)
 scale = Vector2(2, 2)
@@ -149,13 +146,16 @@ scale = Vector2(2, 2)
 color = Color(0, 0, 0, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="MovementParralax"]
-position = Vector2(160, 201)
-texture = ExtResource("7_jncdv")
+position = Vector2(161, 197)
+texture = ExtResource("7_60he4")
 
 [node name="Sprite2D2" type="Sprite2D" parent="MovementParralax"]
 position = Vector2(482, 194)
 scale = Vector2(1.36111, 1)
 texture = ExtResource("9_uvo24")
+
+[node name="UI2" parent="MovementParralax" instance=ExtResource("2_6gdto")]
+layer_0/tile_data = PackedInt32Array(327686, 589824, 5, 393222, 589824, 5, 458758, 589824, 5, 524293, 524288, 6, 524292, 524288, 6, 524291, 458752, 6, 458755, 458752, 5, 393219, 458752, 5, 327683, 458752, 5, 458765, 655360, 5, 524301, 655360, 6, 524302, 720896, 6, 524303, 720896, 6, 524294, 589824, 6, 196611, 458752, 4, 196614, 589824, 4, 196613, 524288, 4, 196612, 524288, 4, 262150, 589824, 5, 262147, 458752, 5, 393224, 458752, 0, 458760, 458752, 1, 393225, 524288, 0, 458761, 524288, 1, 393226, 589824, 0, 458762, 589824, 1, 393227, 655360, 0, 458763, 655360, 1, 524304, 786432, 6, 458768, 786432, 5, 393232, 786432, 5, 327696, 786432, 5, 262160, 786432, 5, 393229, 655360, 5, 327693, 655360, 5, 262157, 655360, 5, 196621, 655360, 4, 196622, 720896, 4, 196623, 720896, 4, 196624, 786432, 4)
 
 [node name="Cityname" type="Label" parent="MovementParralax"]
 offset_left = 128.0
