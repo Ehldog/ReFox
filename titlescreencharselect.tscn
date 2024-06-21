@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c2fug7fbrqkw8"]
+[gd_scene load_steps=14 format=3 uid="uid://c2fug7fbrqkw8"]
 
 [ext_resource type="PackedScene" uid="uid://c38la50f1d0ub" path="res://Level/City/parallax_bg_titlescreen.tscn" id="1_m7kpo"]
 [ext_resource type="Script" path="res://Script/titlescreencharselect.gd" id="1_xe7k7"]
@@ -6,7 +6,10 @@
 [ext_resource type="Script" path="res://Script/MovementParralax.gd" id="3_xsqfj"]
 [ext_resource type="Texture2D" uid="uid://cl42oiee6a5oi" path="res://Assets/DARK Patreon Bundle/UI - Ammo/UI - Words/Words With BG/UI - Words8.png" id="4_kr4ad"]
 [ext_resource type="PackedScene" uid="uid://ddl3kmbdoin8q" path="res://Characters/Omen/player_omen.tscn" id="5_solou"]
+[ext_resource type="Texture2D" uid="uid://doacreryjckst" path="res://Assets/DARK - Vic Para & Assets/Assets/tree03.png" id="7_jncdv"]
 [ext_resource type="AudioStream" uid="uid://d3105guf5xhmn" path="res://Assets/Pixel RPG Music Pack/Ogg/Pixel 3.ogg" id="8_0dl53"]
+[ext_resource type="Texture2D" uid="uid://hy5wcerwl0y7" path="res://Assets/DARK - Vic Para & Assets/Assets/tomb.png" id="8_18j4f"]
+[ext_resource type="Texture2D" uid="uid://cpp0rmn7jarq6" path="res://Assets/DARK Patreon Bundle/UI - Ammo/UI - Words/Words With BG/UI - Words5.png" id="9_6kg8p"]
 [ext_resource type="AudioStream" uid="uid://bqu6ln82wjm61" path="res://Assets/Sound Effects/10_UI_Menu_SFX/013_Confirm_03.wav" id="9_c3a63"]
 
 [sub_resource type="Animation" id="Animation_qnsg1"]
@@ -59,6 +62,13 @@ offset_right = 371.0
 offset_bottom = 110.0
 icon = ExtResource("4_kr4ad")
 
+[node name="Start" type="Button" parent="MovementParralax"]
+offset_left = 272.0
+offset_top = 257.0
+offset_right = 373.0
+offset_bottom = 298.0
+icon = ExtResource("9_6kg8p")
+
 [node name="transition" type="AnimationPlayer" parent="MovementParralax"]
 root_node = NodePath("../..")
 libraries = {
@@ -66,32 +76,11 @@ libraries = {
 }
 
 [node name="ColorRect" type="ColorRect" parent="MovementParralax/transition"]
-visible = false
 self_modulate = Color(1, 1, 1, 0)
 offset_right = 639.0
 offset_bottom = 360.0
 scale = Vector2(2, 2)
 color = Color(0, 0, 0, 1)
-
-[node name="CheckButton" type="CheckButton" parent="MovementParralax"]
-offset_left = 271.0
-offset_top = 207.0
-offset_right = 315.0
-offset_bottom = 231.0
-
-[node name="City" type="Label" parent="MovementParralax"]
-offset_left = 237.0
-offset_top = 206.0
-offset_right = 274.0
-offset_bottom = 229.0
-text = "City"
-
-[node name="Underground" type="Label" parent="MovementParralax"]
-offset_left = 313.0
-offset_top = 206.0
-offset_right = 417.0
-offset_bottom = 262.0
-text = "Underground"
 
 [node name="ButtonPlayer" type="Button" parent="MovementParralax"]
 offset_left = 103.0
@@ -99,18 +88,55 @@ offset_top = 106.0
 offset_right = 214.0
 offset_bottom = 276.0
 
-[node name="ButtonPlayer2" type="Button" parent="MovementParralax"]
-offset_left = 427.0
-offset_top = 170.0
-offset_right = 598.0
-offset_bottom = 276.0
-
 [node name="UI2" parent="MovementParralax" instance=ExtResource("2_6gdto")]
-layer_0/tile_data = PackedInt32Array(327686, 589824, 5, 393222, 589824, 5, 458758, 589824, 5, 524293, 524288, 6, 524292, 524288, 6, 524291, 458752, 6, 458755, 458752, 5, 393219, 458752, 5, 327683, 458752, 5, 327696, 720896, 4, 327695, 720896, 4, 327694, 720896, 4, 327693, 655360, 4, 393229, 655360, 5, 458765, 655360, 5, 524301, 655360, 6, 524302, 720896, 6, 524303, 720896, 6, 524304, 720896, 6, 524294, 589824, 6, 196611, 458752, 4, 196614, 589824, 4, 196613, 524288, 4, 196612, 524288, 4, 262150, 589824, 5, 262147, 458752, 5, 327698, 786432, 4, 524305, 720896, 6, 524306, 786432, 6, 327697, 720896, 4, 458770, 786432, 5, 393234, 786432, 5)
+layer_0/tile_data = PackedInt32Array(327686, 589824, 5, 393222, 589824, 5, 458758, 589824, 5, 524293, 524288, 6, 524292, 524288, 6, 524291, 458752, 6, 458755, 458752, 5, 393219, 458752, 5, 327683, 458752, 5, 458765, 655360, 5, 524301, 655360, 6, 524302, 720896, 6, 524303, 720896, 6, 524294, 589824, 6, 196611, 458752, 4, 196614, 589824, 4, 196613, 524288, 4, 196612, 524288, 4, 262150, 589824, 5, 262147, 458752, 5, 393224, 458752, 0, 458760, 458752, 1, 393225, 524288, 0, 458761, 524288, 1, 393226, 589824, 0, 458762, 589824, 1, 393227, 655360, 0, 458763, 655360, 1, 524304, 786432, 6, 458768, 786432, 5, 393232, 786432, 5, 327696, 786432, 5, 262160, 786432, 5, 393229, 655360, 5, 327693, 655360, 5, 262157, 655360, 5, 196621, 655360, 4, 196622, 720896, 4, 196623, 720896, 4, 196624, 786432, 4)
 
 [node name="Player_Omen" parent="MovementParralax" instance=ExtResource("5_solou")]
-position = Vector2(175, 216)
+position = Vector2(336, 183)
 scale = Vector2(2, 2)
+
+[node name="ButtonPlayer2" type="Button" parent="MovementParralax"]
+offset_left = 428.0
+offset_top = 106.0
+offset_right = 532.0
+offset_bottom = 276.0
+
+[node name="transitionlvl" type="AnimationPlayer" parent="MovementParralax"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_upshh")
+}
+
+[node name="ColorRect" type="ColorRect" parent="MovementParralax/transitionlvl"]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+offset_right = 639.0
+offset_bottom = 360.0
+scale = Vector2(2, 2)
+color = Color(0, 0, 0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="MovementParralax"]
+position = Vector2(160, 201)
+texture = ExtResource("7_jncdv")
+
+[node name="Sprite2D2" type="Sprite2D" parent="MovementParralax"]
+position = Vector2(482, 215)
+texture = ExtResource("8_18j4f")
+
+[node name="Cityname" type="Label" parent="MovementParralax"]
+offset_left = 128.0
+offset_top = 127.0
+offset_right = 191.0
+offset_bottom = 150.0
+text = "The City"
+
+[node name="Undergroundname" type="Label" parent="MovementParralax"]
+offset_left = 432.0
+offset_top = 119.0
+offset_right = 543.0
+offset_bottom = 154.0
+scale = Vector2(0.9, 0.9)
+text = "Underground"
 
 [node name="OSTMENU" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_0dl53")
@@ -120,7 +146,8 @@ autoplay = true
 stream = ExtResource("9_c3a63")
 
 [connection signal="pressed" from="MovementParralax/bck" to="." method="_on_bck_pressed"]
+[connection signal="pressed" from="MovementParralax/Start" to="." method="_on_start_pressed"]
 [connection signal="animation_finished" from="MovementParralax/transition" to="." method="_on_transition_animation_finished"]
-[connection signal="pressed" from="MovementParralax/CheckButton" to="." method="_on_check_button_pressed"]
 [connection signal="pressed" from="MovementParralax/ButtonPlayer" to="." method="_on_button_player_pressed"]
 [connection signal="pressed" from="MovementParralax/ButtonPlayer2" to="." method="_on_button_player_2_pressed"]
+[connection signal="animation_finished" from="MovementParralax/transitionlvl" to="." method="_on_transitionlvl_animation_finished"]
