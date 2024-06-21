@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0ekgove7k4m2"]
+
+[ext_resource type="Texture2D" uid="uid://j6sax8n578gt" path="res://Assets/DARK - Vic Para & Assets/Assets/tree02.png" id="1_3p6gb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x5ew8"]
+
+[node name="Tree02" type="Area2D"]
+z_index = 5
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("1_3p6gb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_x5ew8")
+disabled = true

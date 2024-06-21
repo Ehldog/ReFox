@@ -11,8 +11,18 @@
 script = ExtResource("1_7rhb7")
 player_choice = NodePath("Player_Omen")
 ground_choice = NodePath("GroundCityLvl")
+PLAYER_START_POS = null
+CAM_START_POS = null
+START_SPEED = null
 min_range_spawn = 50
 max_range_spawn = 300
+MAX_SPEED = null
+SCORE_MODIFIER = null
+SPEED_MODIFIER = null
+MIN_DIFFICULTY = null
+MEDIUM_DIFFICULTY = null
+MAX_DIFFICULTY = null
+MAX_INVICIBLE_CHARGE = null
 
 [node name="Player_Omen" parent="." instance=ExtResource("1_0n0dm")]
 z_index = 2
@@ -32,10 +42,5 @@ scale = Vector2(2, 2)
 
 [node name="ParallaxBg_CityLvl" parent="." instance=ExtResource("1_jf1a7")]
 
-[node name="InvicibleTimer" type="Timer" parent="."]
-wait_time = 5.0
-one_shot = true
-
 [connection signal="speed_var" from="." to="Player_Omen" method="_on_city_lvl_speed_var"]
 [connection signal="camera_player" from="Player_Omen" to="." method="_on_player_omen_camera_player"]
-[connection signal="timeout" from="InvicibleTimer" to="." method="_on_invicible_timer_timeout"]

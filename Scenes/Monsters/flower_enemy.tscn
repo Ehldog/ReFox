@@ -1,0 +1,113 @@
+[gd_scene load_steps=16 format=3 uid="uid://dtg426o07rgcu"]
+
+[ext_resource type="Texture2D" uid="uid://4bqjg0vyjjev" path="res://Assets/Monsters/Flower Enemy/attack 32x32.png" id="1_11620"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j1s0j"]
+atlas = ExtResource("1_11620")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eroli"]
+atlas = ExtResource("1_11620")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oi8do"]
+atlas = ExtResource("1_11620")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nbhjk"]
+atlas = ExtResource("1_11620")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_158ib"]
+atlas = ExtResource("1_11620")
+region = Rect2(0, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_leixe"]
+atlas = ExtResource("1_11620")
+region = Rect2(0, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dgcmu"]
+atlas = ExtResource("1_11620")
+region = Rect2(0, 192, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bje1p"]
+atlas = ExtResource("1_11620")
+region = Rect2(0, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6cffh"]
+atlas = ExtResource("1_11620")
+region = Rect2(0, 256, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_38tj2"]
+atlas = ExtResource("1_11620")
+region = Rect2(0, 288, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sxmcr"]
+atlas = ExtResource("1_11620")
+region = Rect2(0, 320, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xktug"]
+atlas = ExtResource("1_11620")
+region = Rect2(0, 352, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uqans"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j1s0j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eroli")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oi8do")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nbhjk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_158ib")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_leixe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dgcmu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bje1p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6cffh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_38tj2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sxmcr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xktug")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u0s2q"]
+size = Vector2(28, 32)
+
+[node name="FlowerEnemy" type="Area2D"]
+z_index = 4
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_uqans")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.572309
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 16)
+shape = SubResource("RectangleShape2D_u0s2q")

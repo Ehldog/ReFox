@@ -22,8 +22,7 @@ func get_jump_input() -> bool:
 # SORTIE : vrais ou faux	
 func get_jump_released() -> bool:
 	return Input.is_action_just_released("jump")
-
-
+	
 func _on_player_glitch_speed_auto(speed_value):
 	speed_auto = speed_value # Replace with function body.
 

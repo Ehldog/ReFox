@@ -56,7 +56,7 @@ func handle_jump_animation(is_jumping: bool, is_falling: bool) -> void:
 func handle_landing_animation(body: CharacterBody2D) -> void:
 	if body.is_on_floor():
 		playback.travel("Move")
-
+	
 # Retour 
 func _on_animation_tree_animation_finished(anim_name):
-	return anim_name == fall_animation # Replace with function body.
+	return anim_name == fall_animation
