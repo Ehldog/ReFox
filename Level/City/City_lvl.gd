@@ -82,6 +82,7 @@ func new_game():
 	
 	# reset hud & game over screen
 	$Hud.get_node("SpaceLabel").show()
+	$Hud.get_node("18").hide()
 	
 	# reset invincible power
 	invicible_power = false
@@ -100,7 +101,8 @@ func _process(delta):
 		invicible_activation()
 		generate_obs()
 		generate_sprite()
-		print(invicible_power)
+		
+		print(invicible_statut)
 		
 		# Move player
 		player_choice.position.x += speed
@@ -190,9 +192,11 @@ func check_high_score():
 func invicible_activation():
 	if difficulty == MEDIUM_DIFFICULTY:
 		invicible_power = true
+		$Hud.get_node("18").show()
 	
 	if invicible_power && Input.is_action_just_pressed("bite"):
 		$InvicibleTimer.start()
+		$InvicibleHudTimer.start()
 		invicible_statut = true
 	
 func game_over():
@@ -210,3 +214,13 @@ func _on_player_omen_camera_player(camera_pos_x):
 
 func _on_invicible_timer_timeout():
 	invicible_statut = false
+	$InvicibleChargeTimer.start()
+	$InvicibleHudTimer.stop()
+	$Hud.get_node("Control/ProgressBar").value = 0
+
+func _on_invicible_hud_timer_timeout():
+	$Hud.get_node("Control/ProgressBar").value -= 1
+
+func _on_invicible_charge_timer_timeout():
+	invicible_statut = true
+	$Hud.get_node("Control/ProgressBar").value = 10

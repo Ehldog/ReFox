@@ -13,6 +13,7 @@ player_choice = NodePath("Player_Omen")
 ground_choice = NodePath("GroundCityLvl")
 min_range_spawn = 50
 max_range_spawn = 300
+SPEED_MODIFIER = 1000
 
 [node name="Player_Omen" parent="." instance=ExtResource("1_0n0dm")]
 z_index = 2
@@ -36,6 +37,15 @@ scale = Vector2(2, 2)
 wait_time = 5.0
 one_shot = true
 
+[node name="InvicibleChargeTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[node name="InvicibleHudTimer" type="Timer" parent="."]
+wait_time = 0.5
+
 [connection signal="speed_var" from="." to="Player_Omen" method="_on_city_lvl_speed_var"]
 [connection signal="camera_player" from="Player_Omen" to="." method="_on_player_omen_camera_player"]
 [connection signal="timeout" from="InvicibleTimer" to="." method="_on_invicible_timer_timeout"]
+[connection signal="timeout" from="InvicibleChargeTimer" to="." method="_on_invicible_charge_timer_timeout"]
+[connection signal="timeout" from="InvicibleHudTimer" to="." method="_on_invicible_hud_timer_timeout"]
