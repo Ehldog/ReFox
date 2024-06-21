@@ -169,6 +169,7 @@ func generate_sprite():
 		last_sprite = sprite
 		add_sprite(sprite, sprite_x + player_choice.position.x, sprite_y)
 
+# add obstacles & sprites
 func add_obs(obs, x, y):
 	obs.position = Vector2i(x, y)
 	obs.body_entered.connect(hit_obs)
@@ -180,6 +181,7 @@ func add_sprite(sprite, x, y):
 	add_child(sprite)
 	sprites.append(sprite)
 
+# remove obstacles & sprites
 func remove_obs(obs):
 	obs.queue_free()
 	obstacles.erase(obs)
@@ -187,11 +189,13 @@ func remove_obs(obs):
 func remove_sprite(sprite):
 	sprite.queue_free()
 	sprites.erase(sprite)
-
+	
+# on hit condition: game over or invicibility
 func hit_obs(body):
 	if body.name == "Player_Omen" && not invicible_statut:
 		game_over()
-		
+	
+# score & highscore
 func show_score():
 	$Hud.get_node("ScoreLabel").text = " Score: " + str(score / Global.SCORE_MODIFIER)
 
@@ -200,19 +204,22 @@ func check_high_score():
 		Global.globalscore = score
 		$Hud.get_node("HighScoreLabel").text = "High Score: " + str(Global.globalscore / Global.SCORE_MODIFIER) + " "
 
+# power up activation
 func invicible_activation():
 	if difficulty == MEDIUM_DIFFICULTY:
 		invicible_power = true
 		$Hud.get_node("18").show()
 		$Hud.get_node("Control/ProgressBar").show()
-		
+	
+	# power up use	
 	if invicible_power && Input.is_action_just_pressed("bite"):
 		$InvicibleTimer.start()
 		$InvicibleHudTimer.start()
 		invicible_statut = true
 		$Player_Omen.modulate = Color(1,1,1,0.7)
 		$Player_Omen/Invu.play()
-	
+
+# game over & difficulty adjustement	
 func game_over():
 	$Player_Omen/ded.play()
 	check_high_score()
@@ -226,6 +233,7 @@ func adjust_difficulty():
 	if difficulty > MAX_DIFFICULTY:
 		difficulty = MAX_DIFFICULTY
 
+# all signal
 func _on_player_omen_camera_player(camera_pos_x):
 	cam_player_x = camera_pos_x 
 
