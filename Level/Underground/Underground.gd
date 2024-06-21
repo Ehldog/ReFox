@@ -18,24 +18,21 @@ extends Node2D
 @export var MAX_DIFFICULTY : int = 5
 
 # preload obstacle ( spawner directement dans le code faute de temps)
+var elec_bot = preload("res://Scenes/Monsters/bot_01.tscn")
 var pig_assassin = preload("res://Scenes/Monsters/Pig_Assassin.tscn")
-var pigs_assassin = preload("res://Scenes/Monsters/Pigs_Assassin.tscn")
-var troll = preload("res://Scenes/Monsters/Troll.tscn")
-var troll_and_pigs = preload("res://Scenes/Monsters/Troll_and_pigs.tscn")
-var flower_enemy = preload("res://Scenes/Monsters/flower_enemy.tscn")
-var flowers_enemy = preload("res://Scenes/Monsters/flowers_enemy.tscn")
-var flowerssss_enemy = preload("res://Scenes/Monsters/flowerssss_enemy.tscn")
-var obstacle_types := [flower_enemy, pig_assassin, troll]
-var obstacle_types_min_diff := [flower_enemy, pig_assassin, troll, flowers_enemy]
-var obstacle_types_medium_diff := [troll, flowers_enemy, pigs_assassin, pig_assassin]
-var obstacle_types_max_diff := [flowers_enemy, flowerssss_enemy, pigs_assassin, troll_and_pigs]
+var small_monster = preload("res://Scenes/Sprites/small_monster.tscn")
+var obstacle_types := [elec_bot, pig_assassin, small_monster]
+var obstacle_types_min_diff := [elec_bot, pig_assassin, small_monster]
+var obstacle_types_medium_diff := [elec_bot, pig_assassin, small_monster]
+var obstacle_types_max_diff := [elec_bot, pig_assassin, small_monster]
 var obstacles: Array
 
 # preload sprites
 var tree_01 = preload("res://Scenes/Sprites/tree_01.tscn")
 var tree_02 = preload("res://Scenes/Sprites/tree_02.tscn")
 var tree_03 = preload("res://Scenes/Sprites/tree_03.tscn")
-var sprite_type := [tree_01, tree_02, tree_03]
+var barrier = preload("res://Scenes/Sprites/barrier.tscn")
+var sprite_type := [barrier, barrier, barrier]
 var sprites: Array
 
 # game variables
@@ -75,7 +72,7 @@ func new_game():
 	ground_choice.position = Vector2i(0, -358)
 	
 	# reset all obstacles
-	obstacle_types = [pig_assassin, troll, flower_enemy]
+	obstacle_types = [elec_bot, pig_assassin, small_monster]
 	
 	for obs in obstacles:
 		obs.queue_free()
@@ -148,7 +145,7 @@ func generate_obs():
 		var spriteheight = obs.get_node("AnimatedSprite2D").sprite_frames.get_frame_texture("idle", 0)
 		var obs_height = spriteheight.get_size()
 		var obs_x: int = screen_size.x + score + 100
-		var obs_y: int = screen_size.y - ground_height - (obs_height.y/2) + 15
+		var obs_y: int = screen_size.y - ground_height - (obs_height.y/2) + 20
 		last_obs = obs
 		add_obs(obs, obs_x + player_choice.position.x, obs_y)
 
@@ -159,7 +156,7 @@ func generate_sprite():
 		sprite = sprt_type.instantiate()
 		var sprite_height = sprite.get_node("Sprite2D").texture.get_height()
 		var sprite_x: int = screen_size.x + score + 100
-		var sprite_y: int = screen_size.y - ground_height - (sprite_height / 2)
+		var sprite_y: int = screen_size.y - ground_height - (sprite_height / 2) + 10
 		last_sprite = sprite
 		add_sprite(sprite, sprite_x + player_choice.position.x, sprite_y)
 

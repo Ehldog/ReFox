@@ -1,0 +1,72 @@
+[gd_scene load_steps=10 format=3 uid="uid://dh625nuc5kaht"]
+
+[ext_resource type="Texture2D" uid="uid://drmndfy027hom" path="res://Assets/Monsters/Small Monster/small moidle.png" id="1_1f5r7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_smrum"]
+atlas = ExtResource("1_1f5r7")
+region = Rect2(0, 0, 82, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4qaqi"]
+atlas = ExtResource("1_1f5r7")
+region = Rect2(0, 39, 82, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_471ok"]
+atlas = ExtResource("1_1f5r7")
+region = Rect2(0, 78, 82, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p883n"]
+atlas = ExtResource("1_1f5r7")
+region = Rect2(0, 117, 82, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_paji5"]
+atlas = ExtResource("1_1f5r7")
+region = Rect2(0, 156, 82, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iynxd"]
+atlas = ExtResource("1_1f5r7")
+region = Rect2(0, 195, 82, 39)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e7e0g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_smrum")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4qaqi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_471ok")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p883n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_paji5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iynxd")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_03xmy"]
+radius = 6.0
+height = 28.0
+
+[node name="SmallMonster" type="Area2D"]
+z_index = 1
+scale = Vector2(2, 2)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_e7e0g")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.0397685
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(28, 4)
+shape = SubResource("CapsuleShape2D_03xmy")
