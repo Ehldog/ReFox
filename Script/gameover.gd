@@ -2,6 +2,9 @@ extends Node2D
 @onready var transition = $transition
 @onready var SelectNoise = $Select
 
+func _ready():
+	$transin.play("fadein")
+	
 func _on_menu_button_pressed():
 	SelectNoise.play()
 	transition.play("fade")

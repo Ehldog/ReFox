@@ -1,5 +1,5 @@
 extends Node2D
-
+@onready var transition = $Player_Omen/trans
 @export_subgroup("Node")
 @export var player_choice = CharacterBody2D
 @export var ground_choice = StaticBody2D
@@ -57,6 +57,7 @@ var difficulty
 signal speed_var(speed_value)
 
 func _ready():
+	$transin.play("fadein")
 	screen_size = Vector2i(640, 360)
 	ground_height = $GroundCityLvl.get_node("Sprite2D").texture.get_height()
 	new_game()
@@ -106,6 +107,7 @@ func _physics_process(delta):
 		
 		# Move player
 		player_choice.position.x += speed
+		$Player_Omen/trans/ColorRect.position.x =+ player_choice.position.x - 140
 		
 		# Update ground position
 		if cam_player_x - ground_choice.position.x > screen_size.x:
@@ -131,6 +133,7 @@ func _physics_process(delta):
 		if Input.is_action_just_pressed("ui_accept"):
 			game_running = true
 			$Hud.get_node("SpaceLabel").hide()
+		
 
  #obstacle spwaner (FAIRE LES COMMENTAIRES !!)
 func generate_obs():
@@ -204,11 +207,14 @@ func invicible_activation():
 		$InvicibleTimer.start()
 		$InvicibleHudTimer.start()
 		invicible_statut = true
+		$Player_Omen.modulate = Color(1,1,1,0.7)
 	
 func game_over():
 	check_high_score()
-	get_tree().paused = true
+	invicible_power = false
+	#get_tree().paused = true
 	game_running= false
+	transition.play("fade")
 
 func adjust_difficulty():
 	difficulty = score / SPEED_MODIFIER
@@ -223,10 +229,14 @@ func _on_invicible_timer_timeout():
 	$InvicibleChargeTimer.start()
 	$InvicibleHudTimer.stop()
 	$Hud.get_node("Control/ProgressBar").value = 0
+	$Player_Omen.modulate = Color(1,1,1,1)
 
 func _on_invicible_hud_timer_timeout():
 	$Hud.get_node("Control/ProgressBar").value -= 1
 
 func _on_invicible_charge_timer_timeout():
-	invicible_statut = true
 	$Hud.get_node("Control/ProgressBar").value = 10
+
+
+func _on_trans_animation_finished(anim_name):
+	get_tree().change_scene_to_file("res://SceneSapo/gameover.tscn")
