@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://ddl3kmbdoin8q"]
+[gd_scene load_steps=38 format=3 uid="uid://ddl3kmbdoin8q"]
 
 [ext_resource type="Script" path="res://Characters/Omen/player_omen.gd" id="1_1kcb3"]
 [ext_resource type="Texture2D" uid="uid://bbnoeg3abldlp" path="res://Assets/DARK - Dog Companion/Doggo-Fall_Wh.png" id="1_bhe28"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://cmliirm4gwimm" path="res://Component/movement_component.tscn" id="10_i4euo"]
 [ext_resource type="PackedScene" uid="uid://bjq4pbuawg5ic" path="res://Component/Jump/jump_component.tscn" id="11_6d6qd"]
 [ext_resource type="Script" path="res://Characters/Omen/LabelDebug.gd" id="13_e6rbj"]
+[ext_resource type="AudioStream" uid="uid://beu8ghpb4jdyt" path="res://Assets/Sound Effects/30_Jump_03.wav" id="15_6tdfi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0ssbi"]
 size = Vector2(12, 14)
@@ -351,6 +352,9 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jbbk4")
+}
 tree_root = SubResource("AnimationNodeStateMachine_4da7x")
 anim_player = NodePath("../AnimationPlayer")
 parameters/Move/blend_position = 0
@@ -403,5 +407,8 @@ idle_box = NodePath("../Collision_idle")
 run_box = NodePath("../Collision_run")
 jump_box = NodePath("../Collision_jump")
 fall_box = NodePath("../Collision_fall")
+
+[node name="JumpSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_6tdfi")
 
 [connection signal="speed_auto" from="." to="Components/InputComponent" method="_on_player_omen_speed_auto"]

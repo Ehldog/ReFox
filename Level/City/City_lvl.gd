@@ -99,7 +99,6 @@ func _physics_process(delta):
 		if speed > MAX_SPEED:
 			speed = MAX_SPEED
 		adjust_difficulty()
-		
 		# obstacle spwaner
 		invicible_activation()
 		generate_obs()
@@ -208,8 +207,10 @@ func invicible_activation():
 		$InvicibleHudTimer.start()
 		invicible_statut = true
 		$Player_Omen.modulate = Color(1,1,1,0.7)
+		$Player_Omen/Invu.play()
 	
 func game_over():
+	$Player_Omen/ded.play()
 	check_high_score()
 	invicible_power = false
 	#get_tree().paused = true
@@ -235,6 +236,7 @@ func _on_invicible_hud_timer_timeout():
 	$Hud.get_node("Control/ProgressBar").value -= 1
 
 func _on_invicible_charge_timer_timeout():
+	$Player_Omen/RetourInvu.play()
 	$Hud.get_node("Control/ProgressBar").value = 10
 
 

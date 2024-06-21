@@ -4,6 +4,13 @@ extends Node2D
 @onready var SelectNoise = $Select
 @onready var transitionlvl = $MovementParralax/transitionlvl
 
+func _physics_process(delta):
+	if Global.joueur == false:
+		$MovementParralax/ButtonPlayer.modulate = Color(4,4,4)
+		$MovementParralax/ButtonPlayer2.modulate = Color(0.7,0.7,0.7)
+	else:
+		$MovementParralax/ButtonPlayer.modulate = Color(0.7,0.7,0.7)
+		$MovementParralax/ButtonPlayer2.modulate = Color(4,4,4)
 func _ready() -> void:
 	$MovementParralax/transin.play("fadein")
 	$MovementParralax/transition/ColorRect.visible = false 

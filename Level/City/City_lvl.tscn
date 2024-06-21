@@ -1,11 +1,15 @@
-[gd_scene load_steps=11 format=3 uid="uid://c38pte8gxjce2"]
+[gd_scene load_steps=15 format=3 uid="uid://c38pte8gxjce2"]
 
 [ext_resource type="PackedScene" uid="uid://ddl3kmbdoin8q" path="res://Characters/Omen/player_omen.tscn" id="1_0n0dm"]
 [ext_resource type="Script" path="res://Level/City/City_lvl.gd" id="1_7rhb7"]
 [ext_resource type="PackedScene" uid="uid://c0te07er76rrm" path="res://Level/City/parallax_bg_CityLvl.tscn" id="1_jf1a7"]
 [ext_resource type="PackedScene" uid="uid://c10dpkakf00me" path="res://Level/City/Ground_CityLvl.tscn" id="1_t234q"]
 [ext_resource type="PackedScene" uid="uid://b4q4fehpg26jc" path="res://Scenes/HUD.tscn" id="2_xhxyh"]
+[ext_resource type="AudioStream" uid="uid://cb5okfn8d88yo" path="res://Assets/Sound Effects/88_Teleport_02.wav" id="4_0gue5"]
+[ext_resource type="AudioStream" uid="uid://dxjmse6cfcdij" path="res://Assets/Sound Effects/45_Charge_05.wav" id="5_owm7x"]
 [ext_resource type="AudioStream" uid="uid://blooj37prdya5" path="res://Assets/Pixel RPG Music Pack/Ogg/Pixel 9.ogg" id="6_73cxo"]
+[ext_resource type="AudioStream" uid="uid://u7jfusjtbawu" path="res://Assets/Sound Effects/48_Speed_up_02.wav" id="6_fjbmy"]
+[ext_resource type="AudioStream" uid="uid://buafslhor0nk" path="res://Assets/Sound Effects/61_Hit_03.wav" id="8_cavof"]
 
 [sub_resource type="Animation" id="Animation_3hi17"]
 resource_name = "fade"
@@ -93,15 +97,29 @@ libraries = {
 
 [node name="ColorRect" type="ColorRect" parent="Player_Omen/trans"]
 visible = false
+self_modulate = Color(1, 1, 1, 0)
 offset_right = 794.0
 offset_bottom = 418.0
 scale = Vector2(2, 2)
 color = Color(0, 0, 0, 1)
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Player_Omen"]
+[node name="music" type="AudioStreamPlayer2D" parent="Player_Omen"]
 stream = ExtResource("6_73cxo")
 volume_db = -20.0
 autoplay = true
+
+[node name="Invu" type="AudioStreamPlayer2D" parent="Player_Omen"]
+stream = ExtResource("4_0gue5")
+
+[node name="RetourInvu" type="AudioStreamPlayer2D" parent="Player_Omen"]
+stream = ExtResource("5_owm7x")
+volume_db = -10.0
+
+[node name="SpeedUp" type="AudioStreamPlayer2D" parent="Player_Omen"]
+stream = ExtResource("6_fjbmy")
+
+[node name="ded" type="AudioStreamPlayer2D" parent="Player_Omen"]
+stream = ExtResource("8_cavof")
 
 [node name="Hud" parent="." instance=ExtResource("2_xhxyh")]
 
@@ -129,8 +147,6 @@ libraries = {
 }
 
 [node name="ColorRect" type="ColorRect" parent="transin"]
-visible = false
-self_modulate = Color(1, 1, 1, 0)
 z_index = 2
 offset_right = 743.0
 offset_bottom = 475.0
