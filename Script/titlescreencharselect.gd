@@ -41,7 +41,7 @@ func _on_transitionlvl_animation_finished(anim_name):
 	if Global.joueur == false:
 		get_tree().change_scene_to_file("res://Level/City/City_lvl.tscn")
 	else:
-		get_tree().change_scene_to_file("res://titlescreen.tscn")
+		get_tree().change_scene_to_file("res://Level/Underground/Underground.tscn")
 
 
 

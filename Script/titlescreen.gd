@@ -9,7 +9,7 @@ func _ready() -> void:
 	$MovementParralax/transin.play("fadein")
 	$MovementParralax/transition/ColorRect.visible = false 
 	
-func _on_button_pressed():
+func _on_button_pressed(): 
 	SelectNoise.play()
 	transition.play("fade")
 	
@@ -19,7 +19,7 @@ func _on_exit_pressed():
 	get_tree().quit()
 	
 
-func _on_settings_pressed():
+func _on_settings_pressed(): #Rend les settings visible/invisible
 	SelectNoise.play()
 	Canvassetting.visible = settingvis
 	settingvis = !settingvis

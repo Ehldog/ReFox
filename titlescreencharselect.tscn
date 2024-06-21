@@ -8,9 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://ddl3kmbdoin8q" path="res://Characters/Omen/player_omen.tscn" id="5_solou"]
 [ext_resource type="Texture2D" uid="uid://doacreryjckst" path="res://Assets/DARK - Vic Para & Assets/Assets/tree03.png" id="7_jncdv"]
 [ext_resource type="AudioStream" uid="uid://d3105guf5xhmn" path="res://Assets/Pixel RPG Music Pack/Ogg/Pixel 3.ogg" id="8_0dl53"]
-[ext_resource type="Texture2D" uid="uid://hy5wcerwl0y7" path="res://Assets/DARK - Vic Para & Assets/Assets/tomb.png" id="8_18j4f"]
 [ext_resource type="Texture2D" uid="uid://cpp0rmn7jarq6" path="res://Assets/DARK Patreon Bundle/UI - Ammo/UI - Words/Words With BG/UI - Words5.png" id="9_6kg8p"]
 [ext_resource type="AudioStream" uid="uid://bqu6ln82wjm61" path="res://Assets/Sound Effects/10_UI_Menu_SFX/013_Confirm_03.wav" id="9_c3a63"]
+[ext_resource type="Texture2D" uid="uid://b7dn3oiuykgkn" path="res://Assets/singlemountain.png" id="9_uvo24"]
 
 [sub_resource type="Animation" id="Animation_qnsg1"]
 resource_name = "fade"
@@ -153,8 +153,9 @@ position = Vector2(160, 201)
 texture = ExtResource("7_jncdv")
 
 [node name="Sprite2D2" type="Sprite2D" parent="MovementParralax"]
-position = Vector2(482, 169)
-texture = ExtResource("8_18j4f")
+position = Vector2(482, 194)
+scale = Vector2(1.36111, 1)
+texture = ExtResource("9_uvo24")
 
 [node name="Cityname" type="Label" parent="MovementParralax"]
 offset_left = 128.0
@@ -164,12 +165,12 @@ offset_bottom = 150.0
 text = "The City"
 
 [node name="Undergroundname" type="Label" parent="MovementParralax"]
-offset_left = 432.0
+offset_left = 445.0
 offset_top = 119.0
-offset_right = 543.0
+offset_right = 528.0
 offset_bottom = 154.0
 scale = Vector2(0.9, 0.9)
-text = "Underground"
+text = "Mountains"
 
 [node name="transin" type="AnimationPlayer" parent="MovementParralax"]
 libraries = {
@@ -187,8 +188,8 @@ offset_left = 177.0
 offset_top = 2.0
 offset_right = 472.0
 offset_bottom = 62.0
-text = "Space: JUMP
-Enter: Short Invulnerability  
+text = "Press SPACE to JUMP
+Press ENTER for a Short Invulnerability  
 (Unlocked after the score goes above 2700)"
 
 [node name="OSTMENU" type="AudioStreamPlayer2D" parent="."]
