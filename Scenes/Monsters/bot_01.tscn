@@ -1,0 +1,73 @@
+[gd_scene load_steps=10 format=3 uid="uid://dp02pfq7vvxeq"]
+
+[ext_resource type="Texture2D" uid="uid://b2gwsckbet2x1" path="res://Assets/Monsters/shield droid/walk.png" id="1_w7jll"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fd6br"]
+atlas = ExtResource("1_w7jll")
+region = Rect2(0, 0, 90, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yy4yf"]
+atlas = ExtResource("1_w7jll")
+region = Rect2(0, 31, 90, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n63xn"]
+atlas = ExtResource("1_w7jll")
+region = Rect2(0, 62, 90, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q6rhl"]
+atlas = ExtResource("1_w7jll")
+region = Rect2(0, 93, 90, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1jff"]
+atlas = ExtResource("1_w7jll")
+region = Rect2(0, 124, 90, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xakkp"]
+atlas = ExtResource("1_w7jll")
+region = Rect2(0, 155, 90, 31)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ym00l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fd6br")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yy4yf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n63xn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q6rhl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f1jff")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xakkp")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wpq58"]
+radius = 20.0
+height = 56.0
+
+[node name="Bot01" type="Area2D"]
+z_index = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_ym00l")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.663843
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 8)
+rotation = 3.14159
+shape = SubResource("CapsuleShape2D_wpq58")

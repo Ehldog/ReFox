@@ -12,7 +12,6 @@ player_choice = NodePath("Player_Omen")
 ground_choice = NodePath("GroundUndergroundLvl")
 
 [node name="Player_Omen" parent="." instance=ExtResource("2_65xmm")]
-z_index = 3
 position = Vector2(56, 293)
 scale = Vector2(2, 2)
 
