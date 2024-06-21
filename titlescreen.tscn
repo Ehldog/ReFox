@@ -158,11 +158,11 @@ text = "Volume
 "
 
 [node name="Score" type="Label" parent="MovementParralax"]
-offset_left = 6.0
-offset_right = 52.0
-offset_bottom = 23.0
-scale = Vector2(2, 2)
-text = "00000"
+offset_left = 431.0
+offset_top = 6.0
+offset_right = 639.0
+offset_bottom = 55.0
+horizontal_alignment = 2
 script = ExtResource("7_xkuky")
 
 [node name="Exit" type="Button" parent="MovementParralax"]

@@ -3,6 +3,6 @@ extends Label
 var scoring = 0
 
 func _process(delta):
-	text = str(scoring)
+	text = "High Score: " + str(Global.globalscore / Global.SCORE_MODIFIER) + " "
 
 
