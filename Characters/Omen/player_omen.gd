@@ -50,3 +50,7 @@ func update_animation():
 func _on_city_lvl_speed_var(speed_value):
 	speed = speed_value
 	speed_auto.emit(speed)
+
+func _on_underground_speed_var(speed_value):
+	speed = speed_value
+	speed_auto.emit(speed)

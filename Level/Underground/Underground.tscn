@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://cpybgvisy2jcv"]
+
+[ext_resource type="Script" path="res://Level/Underground/Underground.gd" id="1_i84vo"]
+[ext_resource type="PackedScene" uid="uid://ddl3kmbdoin8q" path="res://Characters/Omen/player_omen.tscn" id="2_65xmm"]
+[ext_resource type="PackedScene" uid="uid://b4q4fehpg26jc" path="res://Scenes/HUD.tscn" id="3_r641r"]
+[ext_resource type="PackedScene" uid="uid://bddk86gaj6w8g" path="res://Level/Underground/Ground_UndergroundLvl.tscn" id="3_tle1y"]
+[ext_resource type="PackedScene" uid="uid://bnwc40v511u57" path="res://Level/Underground/parallax_bg_Underground.tscn" id="4_2epdl"]
+
+[node name="Underground" type="Node2D" node_paths=PackedStringArray("player_choice", "ground_choice")]
+script = ExtResource("1_i84vo")
+player_choice = NodePath("Player_Omen")
+ground_choice = NodePath("GroundUndergroundLvl")
+
+[node name="Player_Omen" parent="." instance=ExtResource("2_65xmm")]
+position = Vector2(56, 293)
+scale = Vector2(2, 2)
+
+[node name="GroundUndergroundLvl" parent="." instance=ExtResource("3_tle1y")]
+position = Vector2(0, -358)
+scale = Vector2(2, 2)
+
+[node name="Hud" parent="." instance=ExtResource("3_r641r")]
+
+[node name="ParallaxBgUnderground" parent="." instance=ExtResource("4_2epdl")]
+
+[node name="InvicibleTimer" type="Timer" parent="."]
+
+[node name="InvicibleChargeTimer" type="Timer" parent="."]
+
+[node name="InvicibleHudTimer" type="Timer" parent="."]
+
+[connection signal="speed_var" from="." to="Player_Omen" method="_on_underground_speed_var"]
+[connection signal="camera_player" from="Player_Omen" to="." method="_on_player_omen_camera_player"]
+[connection signal="timeout" from="InvicibleTimer" to="." method="_on_invicible_timer_timeout"]
+[connection signal="timeout" from="InvicibleChargeTimer" to="." method="_on_invicible_charge_timer_timeout"]
+[connection signal="timeout" from="InvicibleHudTimer" to="." method="_on_invicible_hud_timer_timeout"]

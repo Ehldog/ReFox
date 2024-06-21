@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dw4tu8y4w3vqi"]
+[gd_scene load_steps=4 format=3 uid="uid://dw4tu8y4w3vqi"]
 
 [ext_resource type="Texture2D" uid="uid://b8jorap5vgkr7" path="res://Assets/DARK - Vic Para & Assets/Assets/tree01.png" id="1_soqq2"]
+[ext_resource type="Texture2D" uid="uid://2jg7yneu755u" path="res://Assets/DARK - Vic Para & Assets/Assets/grass_01.png" id="2_fpswt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pq7qn"]
 
@@ -13,3 +14,7 @@ texture = ExtResource("1_soqq2")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_pq7qn")
 disabled = true
+
+[node name="Grass01" type="Sprite2D" parent="."]
+position = Vector2(17, 61)
+texture = ExtResource("2_fpswt")
