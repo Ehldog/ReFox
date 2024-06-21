@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cpybgvisy2jcv"]
+[gd_scene load_steps=15 format=3 uid="uid://cpybgvisy2jcv"]
 
 [ext_resource type="Script" path="res://Level/Underground/Underground.gd" id="1_i84vo"]
 [ext_resource type="PackedScene" uid="uid://ddl3kmbdoin8q" path="res://Characters/Omen/player_omen.tscn" id="2_65xmm"]
@@ -41,6 +41,38 @@ tracks/1/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qtp1g"]
 _data = {
 "fade": SubResource("Animation_3hi17")
+}
+
+[sub_resource type="Animation" id="Animation_5qjby"]
+resource_name = "fadein"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../transin/ColorRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../transin/ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s8sj5"]
+_data = {
+"fadein": SubResource("Animation_5qjby")
 }
 
 [node name="Underground" type="Node2D" node_paths=PackedStringArray("player_choice", "ground_choice")]
@@ -106,6 +138,18 @@ one_shot = true
 
 [node name="InvicibleHudTimer" type="Timer" parent="."]
 wait_time = 0.5
+
+[node name="transin" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Player_Omen")
+libraries = {
+"": SubResource("AnimationLibrary_s8sj5")
+}
+
+[node name="ColorRect" type="ColorRect" parent="transin"]
+z_index = 2
+offset_right = 743.0
+offset_bottom = 475.0
+color = Color(0, 0, 0, 1)
 
 [connection signal="speed_var" from="." to="Player_Omen" method="_on_underground_speed_var"]
 [connection signal="camera_player" from="Player_Omen" to="." method="_on_player_omen_camera_player"]

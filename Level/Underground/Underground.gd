@@ -2,6 +2,9 @@
 
 extends Node2D
 @onready var transition = $Player_Omen/trans
+@onready var transin = $transin
+
+
 @export_subgroup("Node")
 @export var player_choice = CharacterBody2D
 @export var ground_choice = StaticBody2D
@@ -60,6 +63,7 @@ signal speed_var(speed_value)
 
 func _ready():
 	# set screen_size variable and ground height
+	transin.play("fadein")
 	screen_size = Vector2i(640, 360)
 	ground_height = $GroundUndergroundLvl.get_node("Sprite2D").texture.get_height()
 	$Hud.get_node("HighScoreLabel").text = "High Score: " + str(Global.globalscore / Global.SCORE_MODIFIER) + " "

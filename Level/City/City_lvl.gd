@@ -2,6 +2,8 @@
 
 extends Node2D
 @onready var transition = $Player_Omen/trans
+@onready var transin = $transin
+
 @export_subgroup("Node")
 @export var player_choice = CharacterBody2D
 @export var ground_choice = StaticBody2D
@@ -34,7 +36,7 @@ var obstacles: Array
 
 # preload sprites
 var tree_01 = preload("res://Scenes/Sprites/tree_01.tscn")
-var tree_02 = preload("res://Scenes/Sprites/tree_02.tscn")
+var tree_02 = preload("res://Scenes/Sprites/Tree_02.tscn")
 var tree_03 = preload("res://Scenes/Sprites/tree_03.tscn")
 var sprite_type := [tree_01, tree_02, tree_03]
 var sprites: Array
@@ -57,7 +59,7 @@ var difficulty
 signal speed_var(speed_value)
 
 func _ready():
-	$transin.play("fadein")
+	transin.play("fadein")
 	screen_size = Vector2i(640, 360)
 	ground_height = $GroundCityLvl.get_node("Sprite2D").texture.get_height()
 	$Hud.get_node("HighScoreLabel").text = "High Score: " + str(Global.globalscore / Global.SCORE_MODIFIER) + " "
