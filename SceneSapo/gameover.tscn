@@ -1,10 +1,11 @@
-[gd_scene load_steps=31 format=3 uid="uid://c0upeyo6c6j63"]
+[gd_scene load_steps=34 format=3 uid="uid://c0upeyo6c6j63"]
 
 [ext_resource type="Script" path="res://Script/gameover.gd" id="1_g8t23"]
 [ext_resource type="Texture2D" uid="uid://bpykgx0e162ar" path="res://Assets/DARK - Beneath Tileset/Parallax/fog.png" id="1_h7ic4"]
 [ext_resource type="Texture2D" uid="uid://hj0m0bpsev2s" path="res://Assets/DARK - Dog Companion/Doggo-Sleep.png" id="1_hnmbs"]
 [ext_resource type="Texture2D" uid="uid://3c0bk80jbld0" path="res://Assets/DARK Patreon Bundle/UI - Ammo/UI - Words/Words With BG/UI - Words10.png" id="3_qcoeh"]
 [ext_resource type="AudioStream" uid="uid://bqu6ln82wjm61" path="res://Assets/Sound Effects/10_UI_Menu_SFX/013_Confirm_03.wav" id="5_y7ero"]
+[ext_resource type="AudioStream" uid="uid://clu2j7wns0t0k" path="res://Assets/Pixel RPG Music Pack/Ogg/Pixel 12.ogg" id="6_7on6f"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w7xck"]
 atlas = ExtResource("1_hnmbs")
@@ -200,6 +201,38 @@ _data = {
 "fade": SubResource("Animation_qnsg1")
 }
 
+[sub_resource type="Animation" id="Animation_ool30"]
+resource_name = "fadein"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("transin/ColorRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("transin/ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1cbnm"]
+_data = {
+"fadein": SubResource("Animation_ool30")
+}
+
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_g8t23")
 
@@ -248,6 +281,21 @@ color = Color(0, 0, 0, 1)
 
 [node name="Select" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_y7ero")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_7on6f")
+autoplay = true
+
+[node name="transin" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_1cbnm")
+}
+
+[node name="ColorRect" type="ColorRect" parent="transin"]
+visible = false
+offset_right = 662.0
+offset_bottom = 380.0
+color = Color(0, 0, 0, 1)
 
 [connection signal="pressed" from="MenuButton" to="." method="_on_menu_button_pressed"]
 [connection signal="animation_finished" from="transition" to="." method="_on_transition_animation_finished"]

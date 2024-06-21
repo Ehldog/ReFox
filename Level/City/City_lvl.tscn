@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c38pte8gxjce2"]
+[gd_scene load_steps=11 format=3 uid="uid://c38pte8gxjce2"]
 
 [ext_resource type="PackedScene" uid="uid://ddl3kmbdoin8q" path="res://Characters/Omen/player_omen.tscn" id="1_0n0dm"]
 [ext_resource type="Script" path="res://Level/City/City_lvl.gd" id="1_7rhb7"]
@@ -6,6 +6,70 @@
 [ext_resource type="PackedScene" uid="uid://c10dpkakf00me" path="res://Level/City/Ground_CityLvl.tscn" id="1_t234q"]
 [ext_resource type="PackedScene" uid="uid://b4q4fehpg26jc" path="res://Scenes/HUD.tscn" id="2_xhxyh"]
 [ext_resource type="AudioStream" uid="uid://blooj37prdya5" path="res://Assets/Pixel RPG Music Pack/Ogg/Pixel 9.ogg" id="6_73cxo"]
+
+[sub_resource type="Animation" id="Animation_3hi17"]
+resource_name = "fade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("trans/ColorRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("trans/ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qtp1g"]
+_data = {
+"fade": SubResource("Animation_3hi17")
+}
+
+[sub_resource type="Animation" id="Animation_5qjby"]
+resource_name = "fadein"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../transin/ColorRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../transin/ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s8sj5"]
+_data = {
+"fadein": SubResource("Animation_5qjby")
+}
 
 [node name="CityLvl" type="Node2D" node_paths=PackedStringArray("player_choice", "ground_choice")]
 script = ExtResource("1_7rhb7")
@@ -21,6 +85,18 @@ SPEED_MODIFIER = 9000
 z_index = 2
 position = Vector2(56, 293)
 scale = Vector2(2, 2)
+
+[node name="trans" type="AnimationPlayer" parent="Player_Omen"]
+libraries = {
+"": SubResource("AnimationLibrary_qtp1g")
+}
+
+[node name="ColorRect" type="ColorRect" parent="Player_Omen/trans"]
+visible = false
+offset_right = 794.0
+offset_bottom = 418.0
+scale = Vector2(2, 2)
+color = Color(0, 0, 0, 1)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Player_Omen"]
 stream = ExtResource("6_73cxo")
@@ -46,8 +122,23 @@ one_shot = true
 [node name="InvicibleHudTimer" type="Timer" parent="."]
 wait_time = 0.5
 
+[node name="transin" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Player_Omen")
+libraries = {
+"": SubResource("AnimationLibrary_s8sj5")
+}
+
+[node name="ColorRect" type="ColorRect" parent="transin"]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+z_index = 2
+offset_right = 743.0
+offset_bottom = 475.0
+color = Color(0, 0, 0, 1)
+
 [connection signal="speed_var" from="." to="Player_Omen" method="_on_city_lvl_speed_var"]
 [connection signal="camera_player" from="Player_Omen" to="." method="_on_player_omen_camera_player"]
+[connection signal="animation_finished" from="Player_Omen/trans" to="." method="_on_trans_animation_finished"]
 [connection signal="timeout" from="InvicibleTimer" to="." method="_on_invicible_timer_timeout"]
 [connection signal="timeout" from="InvicibleChargeTimer" to="." method="_on_invicible_charge_timer_timeout"]
 [connection signal="timeout" from="InvicibleHudTimer" to="." method="_on_invicible_hud_timer_timeout"]

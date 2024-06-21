@@ -5,6 +5,7 @@ extends Node2D
 @onready var transitionlvl = $MovementParralax/transitionlvl
 
 func _ready() -> void:
+	$MovementParralax/transin.play("fadein")
 	$MovementParralax/transition/ColorRect.visible = false 
 	
 func _on_bck_pressed():

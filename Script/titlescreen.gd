@@ -6,7 +6,9 @@ var fullscreen = false
 var settingvis = true
 
 func _ready() -> void:
+	$MovementParralax/transin.play("fadein")
 	$MovementParralax/transition/ColorRect.visible = false 
+	
 func _on_button_pressed():
 	SelectNoise.play()
 	transition.play("fade")

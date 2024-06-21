@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c4cgap4ncyliu"]
+[gd_scene load_steps=16 format=3 uid="uid://c4cgap4ncyliu"]
 
 [ext_resource type="Script" path="res://Script/titlescreen.gd" id="1_bjvp4"]
 [ext_resource type="PackedScene" uid="uid://c38la50f1d0ub" path="res://Level/City/parallax_bg_titlescreen.tscn" id="1_s5q5k"]
@@ -42,6 +42,38 @@ tracks/1/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_upshh"]
 _data = {
 "fade": SubResource("Animation_qnsg1")
+}
+
+[sub_resource type="Animation" id="Animation_rli62"]
+resource_name = "fadein"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("transin/ColorRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("transin/ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rtyw5"]
+_data = {
+"fadein": SubResource("Animation_rli62")
 }
 
 [node name="NodeTitle" type="Node2D"]
@@ -149,6 +181,16 @@ text = "Fox Project"
 
 [node name="UI" parent="MovementParralax" instance=ExtResource("4_buby4")]
 layer_0/tile_data = PackedInt32Array(65543, 786432, 2, 65544, 851968, 2, 65545, 917504, 2, 65546, 983040, 2, 65547, 1048576, 2, 65548, 1114112, 2, 131081, 917504, 3, 131082, 983040, 3)
+
+[node name="transin" type="AnimationPlayer" parent="MovementParralax"]
+libraries = {
+"": SubResource("AnimationLibrary_rtyw5")
+}
+
+[node name="ColorRect" type="ColorRect" parent="MovementParralax/transin"]
+offset_right = 903.0
+offset_bottom = 510.0
+color = Color(0, 0, 0, 1)
 
 [node name="OSTMENU" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("9_ildpe")
