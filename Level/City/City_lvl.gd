@@ -64,6 +64,7 @@ func _ready():
 func new_game():
 	# reset variables
 	score = 0
+	highscore = 0
 	show_score()
 	game_running = false
 	difficulty = 0
@@ -83,13 +84,14 @@ func new_game():
 	# reset hud & game over screen
 	$Hud.get_node("SpaceLabel").show()
 	$Hud.get_node("18").hide()
+	$Hud.get_node("Control/ProgressBar").hide()
 	
 	# reset invincible power
 	invicible_power = false
 	invicible_statut = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _physics_process(delta):
 	# speed up and difficulty
 	if game_running:
 		speed = START_SPEED + score / SPEED_MODIFIER
@@ -101,8 +103,6 @@ func _process(delta):
 		invicible_activation()
 		generate_obs()
 		generate_sprite()
-		
-		print(invicible_statut)
 		
 		# Move player
 		player_choice.position.x += speed
@@ -120,12 +120,13 @@ func _process(delta):
 			if obs.position.x < (cam_player_x - screen_size.x):
 				remove_obs(obs)
 		
-		#for sprite in sprites:
-			#if sprite.position.x < (cam_player_x - screen_size.x):
-				#remove_obs(sprite)
+		for sprite in sprites:
+			if sprite.position.x < (cam_player_x - screen_size.x):
+				remove_sprite(sprite)
 		
 		# emit signal
 		speed_var.emit(speed)
+		
 	else:
 		if Input.is_action_just_pressed("ui_accept"):
 			game_running = true
@@ -152,7 +153,7 @@ func generate_obs():
 		add_obs(obs, obs_x + player_choice.position.x, obs_y)
 
 func generate_sprite():
-	if sprites.is_empty() or (last_sprite.position.x - player_choice.position.x ) < score + randi_range(min_range_spawn+100, max_range_spawn):
+	if sprites.is_empty() or (last_sprite.position.x - player_choice.position.x ) < score + randi_range(min_range_spawn-100, max_range_spawn):
 		var sprt_type = sprite_type[randi() % sprite_type.size()]
 		var sprite
 		sprite = sprt_type.instantiate()
@@ -177,6 +178,10 @@ func remove_obs(obs):
 	obs.queue_free()
 	obstacles.erase(obs)
 
+func remove_sprite(sprite):
+	sprite.queue_free()
+	sprites.erase(sprite)
+
 func hit_obs(body):
 	if body.name == "Player_Omen" && not invicible_statut:
 		game_over()
@@ -187,13 +192,14 @@ func show_score():
 func check_high_score():
 	if score > highscore:
 		highscore = score
-		$Hud.get_node("HighScoreLabel").text = "High Score: " + str(highscore / SCORE_MODIFIER)
+		$Hud.get_node("HighScoreLabel").text = "High Score: " + str(highscore / SCORE_MODIFIER) + " "
 
 func invicible_activation():
 	if difficulty == MEDIUM_DIFFICULTY:
 		invicible_power = true
 		$Hud.get_node("18").show()
-	
+		$Hud.get_node("Control/ProgressBar").show()
+		
 	if invicible_power && Input.is_action_just_pressed("bite"):
 		$InvicibleTimer.start()
 		$InvicibleHudTimer.start()

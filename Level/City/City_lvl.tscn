@@ -11,9 +11,11 @@
 script = ExtResource("1_7rhb7")
 player_choice = NodePath("Player_Omen")
 ground_choice = NodePath("GroundCityLvl")
+START_SPEED = 5.0
 min_range_spawn = 50
 max_range_spawn = 300
-SPEED_MODIFIER = 1000
+MAX_SPEED = 10.0
+SPEED_MODIFIER = 9000
 
 [node name="Player_Omen" parent="." instance=ExtResource("1_0n0dm")]
 z_index = 2

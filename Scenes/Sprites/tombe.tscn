@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bswqlcj6d2ckb"]
+
+[ext_resource type="Texture2D" uid="uid://hy5wcerwl0y7" path="res://Assets/DARK - Vic Para & Assets/Assets/tomb.png" id="1_tdatm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fvqvn"]
+
+[node name="Tombe" type="Area2D"]
+scale = Vector2(2, 2)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_tdatm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_fvqvn")
+disabled = true
