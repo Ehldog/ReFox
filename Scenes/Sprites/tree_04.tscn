@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://8gm51lhvfuvj"]
+
+[ext_resource type="Texture2D" uid="uid://wtwnxxv7ep71" path="res://Assets/DARK Patreon Bundle/The DARK Series - Trees & Roots/tree_04.png" id="1_hm314"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6bwok"]
+
+[node name="Tree04" type="Area2D"]
+scale = Vector2(1.2, 1.2)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_hm314")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_6bwok")
+disabled = true

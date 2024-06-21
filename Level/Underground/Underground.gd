@@ -21,7 +21,7 @@ extends Node2D
 
 # preload obstacle ( spawner directement dans le code faute de temps)
 var elec_bot = preload("res://Scenes/Monsters/bot_01.tscn")
-var small_monster = preload("res://Scenes/Sprites/small_monster.tscn")
+var small_monster = preload("res://Scenes/Monsters/small_monster.tscn")
 var pig_assassin = preload("res://Scenes/Monsters/Pig_Assassin.tscn")
 var pigs_assassin = preload("res://Scenes/Monsters/Pigs_Assassin.tscn")
 var troll = preload("res://Scenes/Monsters/Troll.tscn")
@@ -36,11 +36,10 @@ var obstacle_types_max_diff := [flowers_enemy, flowerssss_enemy, pigs_assassin, 
 var obstacles: Array
 
 # preload sprites
-var tree_01 = preload("res://Scenes/Sprites/tree_01.tscn")
-var tree_02 = preload("res://Scenes/Sprites/tree_02.tscn")
-var tree_03 = preload("res://Scenes/Sprites/tree_03.tscn")
-var tree_big = preload("res://Scenes/Sprites/tree_big.tscn")
-var sprite_type := [tree_big, tree_big, tree_big]
+var tree_04 = preload("res://Scenes/Sprites/tree_04.tscn")
+var tree_05 = preload("res://Scenes/Sprites/tree_05.tscn")
+var tree_06 = preload("res://Scenes/Sprites/tree_06.tscn")
+var sprite_type := [tree_04, tree_05, tree_06]
 var sprites: Array
 
 # game variables
@@ -156,7 +155,7 @@ func generate_obs():
 		var spriteheight = obs.get_node("AnimatedSprite2D").sprite_frames.get_frame_texture("idle", 0)
 		var obs_height = spriteheight.get_size()
 		var obs_x: int = screen_size.x + score + 100
-		var obs_y: int = screen_size.y - ground_height - (obs_height.y/2) + 20
+		var obs_y: int = screen_size.y - ground_height - (obs_height.y/2) + 15
 		last_obs = obs
 		add_obs(obs, obs_x + player_choice.position.x, obs_y)
 
