@@ -1,3 +1,5 @@
+# https://youtu.be/nKBhz6oJYsc?si=PZQL3FwiR03I1sgy
+
 extends Node2D
 
 @export_subgroup("Node")
@@ -19,20 +21,26 @@ extends Node2D
 
 # preload obstacle ( spawner directement dans le code faute de temps)
 var elec_bot = preload("res://Scenes/Monsters/bot_01.tscn")
-var pig_assassin = preload("res://Scenes/Monsters/Pig_Assassin.tscn")
 var small_monster = preload("res://Scenes/Sprites/small_monster.tscn")
-var obstacle_types := [elec_bot, pig_assassin, small_monster]
-var obstacle_types_min_diff := [elec_bot, pig_assassin, small_monster]
-var obstacle_types_medium_diff := [elec_bot, pig_assassin, small_monster]
-var obstacle_types_max_diff := [elec_bot, pig_assassin, small_monster]
+var pig_assassin = preload("res://Scenes/Monsters/Pig_Assassin.tscn")
+var pigs_assassin = preload("res://Scenes/Monsters/Pigs_Assassin.tscn")
+var troll = preload("res://Scenes/Monsters/Troll.tscn")
+var troll_and_pigs = preload("res://Scenes/Monsters/Troll_and_pigs.tscn")
+var flower_enemy = preload("res://Scenes/Monsters/flower_enemy.tscn")
+var flowers_enemy = preload("res://Scenes/Monsters/flowers_enemy.tscn")
+var flowerssss_enemy = preload("res://Scenes/Monsters/flowerssss_enemy.tscn")
+var obstacle_types := [elec_bot, small_monster, troll]
+var obstacle_types_min_diff := [flower_enemy, small_monster, flowers_enemy, elec_bot]
+var obstacle_types_medium_diff := [troll, flowers_enemy, pigs_assassin, pig_assassin]
+var obstacle_types_max_diff := [flowers_enemy, flowerssss_enemy, pigs_assassin, troll_and_pigs]
 var obstacles: Array
 
 # preload sprites
 var tree_01 = preload("res://Scenes/Sprites/tree_01.tscn")
 var tree_02 = preload("res://Scenes/Sprites/tree_02.tscn")
 var tree_03 = preload("res://Scenes/Sprites/tree_03.tscn")
-var barrier = preload("res://Scenes/Sprites/barrier.tscn")
-var sprite_type := [barrier, barrier, barrier]
+var tree_big = preload("res://Scenes/Sprites/tree_big.tscn")
+var sprite_type := [tree_big, tree_big, tree_big]
 var sprites: Array
 
 # game variables
@@ -54,8 +62,10 @@ var difficulty
 signal speed_var(speed_value)
 
 func _ready():
+	# set screen_size variable and ground height
 	screen_size = Vector2i(640, 360)
 	ground_height = $GroundUndergroundLvl.get_node("Sprite2D").texture.get_height()
+	
 	new_game()
 
 func new_game():
@@ -72,7 +82,7 @@ func new_game():
 	ground_choice.position = Vector2i(0, -358)
 	
 	# reset all obstacles
-	obstacle_types = [elec_bot, pig_assassin, small_monster]
+	obstacle_types = [flower_enemy, pig_assassin, troll]
 	
 	for obs in obstacles:
 		obs.queue_free()
@@ -125,11 +135,12 @@ func _physics_process(delta):
 		speed_var.emit(speed)
 		
 	else:
+		# start the game with space
 		if Input.is_action_just_pressed("ui_accept"):
 			game_running = true
 			$Hud.get_node("SpaceLabel").hide()
 
- #obstacle spwaner (FAIRE LES COMMENTAIRES !!)
+ #obstacle / sprites spwaner (FAIRE LES COMMENTAIRES !!)
 func generate_obs():
 	if difficulty == MIN_DIFFICULTY:
 		obstacle_types = obstacle_types_min_diff
@@ -156,7 +167,7 @@ func generate_sprite():
 		sprite = sprt_type.instantiate()
 		var sprite_height = sprite.get_node("Sprite2D").texture.get_height()
 		var sprite_x: int = screen_size.x + score + 100
-		var sprite_y: int = screen_size.y - ground_height - (sprite_height / 2) + 10
+		var sprite_y: int = screen_size.y - ground_height - (sprite_height / 2) + 15
 		last_sprite = sprite
 		add_sprite(sprite, sprite_x + player_choice.position.x, sprite_y)
 

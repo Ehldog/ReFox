@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddjugrtqut14p"]
+
+[ext_resource type="Texture2D" uid="uid://b4jui4rhxr5st" path="res://Assets/Tileset/tree_big.png" id="1_e8x7e"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gxc5u"]
+
+[node name="TreeBig" type="Area2D"]
+scale = Vector2(1.3, 1.3)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_e8x7e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_gxc5u")
+disabled = true
